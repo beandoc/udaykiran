@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-en="Uday Kiran - Your Journey to Freedom" data-hi="उदय किरण - स्वतंत्रता की आपकी यात्रा">Uday Kiran - Your Journey to Freedom</title>
+    <title data-en="Uday Kiran - Your Journey to Freedom" data-hi="उदय किरण - स्वतंत्रता की आपकी यात्रा" data-mr="उदय किरण - तुमचा स्वातंत्र्याचा प्रवास">Uday Kiran - Your Journey to Freedom</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -17,12 +17,14 @@
             --bg-light: #f9fafb;
             --bg-card: #ffffff;
             --border-color: #e5e7eb;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --success-color: #22c55e;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-light);
-            /* Subtle geometric background pattern */
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23d1fae5' fill-opacity='0.4' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.99-7.5L26 15v18.5l-13 7.5L0 33.5V15z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             color: var(--text-dark);
             -webkit-font-smoothing: antialiased;
@@ -37,10 +39,11 @@
             opacity: 0;
             transform: scale(0.98) translateY(20px);
             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-            display: none; /* Changed from flex */
+            display: none;
             flex-direction: column;
+            align-items: center;
             width: 100%;
-            padding: 2.5rem;
+            padding: 2rem;
             border-top: 4px solid var(--primary-color);
         }
 
@@ -52,9 +55,10 @@
 
         .section-header {
             font-weight: 700;
-            font-size: 2rem;
+            font-size: 1.875rem; /* 30px */
+            line-height: 2.25rem; /* 36px */
             color: var(--primary-color);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             text-align: center;
         }
         
@@ -62,59 +66,58 @@
             text-align: center;
             color: var(--text-light);
             margin-bottom: 2rem;
-            font-size: 1rem;
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
         }
 
+        .app-button-primary, .app-button-secondary, .app-button-back {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
         .app-button-primary {
             background-color: var(--primary-color);
             color: white;
-            padding: 0.8rem 1.75rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 14px 0 rgba(13, 148, 136, 0.39);
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+            box-shadow: 0 4px 14px 0 rgba(13, 148, 136, 0.3);
         }
         .app-button-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px 0 rgba(13, 148, 136, 0.45);
+            box-shadow: 0 6px 20px 0 rgba(13, 148, 136, 0.4);
         }
         
         .app-button-secondary {
-            background-color: #e5e7eb;
-            color: var(--text-dark);
-            font-weight: 600;
-            border: 1px solid #d1d5db;
-            padding: 0.7rem 1.5rem;
-            border-radius: 0.5rem;
-            transition: all 0.2s ease;
+            background-color: #f0fdfa; /* Teal-50 */
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
         }
         .app-button-secondary:hover {
-            background-color: #d1d5db;
+            background-color: #ccfbf1; /* Teal-100 */
         }
 
         .app-button-back {
             color: var(--text-light);
-            font-weight: 600;
             background: transparent;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
         }
-        
+        .app-button-back:hover {
+            background-color: #f3f4f6; /* Gray-100 */
+        }
+
         .input-field {
             background: var(--bg-light);
             border: 1px solid var(--border-color);
             padding: 0.8rem 1rem;
             border-radius: 0.5rem;
             transition: all 0.3s ease;
+            width: 100%;
         }
         .input-field:focus {
             outline: none;
@@ -128,6 +131,9 @@
             border-radius: 0.5rem;
             transition: all 0.2s ease;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
         .radio-option:has(input:checked), .checkbox-option:has(input:checked) {
             background-color: #f0fdfa; /* Teal-50 */
@@ -135,271 +141,250 @@
         }
         .radio-option input, .checkbox-option input {
             accent-color: var(--primary-color);
+            width: 1rem;
+            height: 1rem;
         }
 
-        /* New Health Bar Chart Styles */
-        #healthOverviewScreen .grid {
-            gap: 2rem;
-        }
-        .health-bar-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .health-bar-icon {
-            font-size: 1.5rem;
-            color: var(--text-light);
-            width: 30px;
-            text-align: center;
-        }
-        .health-bar-main {
+        /* Health Bar Chart */
+        .health-bar-container { display: flex; align-items: center; gap: 1rem; }
+        .health-bar-icon { font-size: 1.5rem; color: var(--text-light); width: 30px; text-align: center; }
+        .health-bar-main { width: 100%; }
+        .health-bar-label { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .health-bar-track { width: 100%; height: 12px; background-color: #e5e7eb; border-radius: 6px; overflow: hidden; }
+        .health-bar { height: 100%; border-radius: 6px; transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1), background-color 1s ease; animation: slideIn 1.5s cubic-bezier(0.25, 1, 0.5, 1); }
+        @keyframes slideIn { from { width: 0%; } }
+        #healthInsights { background: #f0fdfa; border-radius: 0.75rem; padding: 1.5rem; border-left: 4px solid var(--secondary-color); }
+
+        /* Stepper */
+        .stepper-container { display: flex; justify-content: center; align-items: center; width: 100%; margin-bottom: 1.5rem; gap: 0.75rem; }
+        .stepper-dot { width: 10px; height: 10px; border-radius: 50%; background-color: var(--border-color); transition: all 0.3s ease; }
+        .stepper-dot.active { background-color: var(--primary-color); transform: scale(1.25); }
+
+        /* Lang Toggle */
+        .lang-toggle { position: fixed; top: 1rem; right: 1rem; background-color: var(--bg-card); color: var(--primary-color); padding: 0.5rem 0.8rem; border-radius: 0.5rem; cursor: pointer; font-size: 0.9rem; font-weight: bold; border: 1px solid var(--border-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05); z-index: 50; }
+
+        .form-section {
             width: 100%;
+            max-width: 450px;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
         }
-        .health-bar-label {
+        
+        .scrollable-content-area {
+            background: var(--bg-light);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            border: 1px solid var(--border-color);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .button-group {
+            width: 100%;
+            max-width: 450px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-        }
-        .health-bar-track {
-            width: 100%;
-            height: 12px;
-            background-color: #e5e7eb;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-        .health-bar {
-            height: 100%;
-            border-radius: 6px;
-            transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1), background-color 1s ease;
-            animation: slideIn 1.5s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        @keyframes slideIn {
-            from { width: 0%; }
-        }
-
-        #healthInsights {
-            background: #f0fdfa;
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            border-left: 4px solid var(--secondary-color);
-        }
-
-        /* Stepper */
-        .stepper-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 2rem;
-            gap: 0.5rem;
-        }
-        .stepper-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: var(--border-color);
-            transition: all 0.3s ease;
-        }
-        .stepper-dot.active {
-            background-color: var(--primary-color);
-            transform: scale(1.25);
-        }
-
-        .logo-placeholder {
-            width: 120px;
-            height: 40px;
-            margin: 0 auto 1rem;
-            text-align: center;
-            color: var(--text-light);
-            border: 2px dashed var(--border-color);
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        /* Lang Toggle */
-        .lang-toggle {
-            position: fixed;
-            top: 1rem; right: 1rem;
-            background-color: var(--bg-card);
-            color: var(--primary-color);
-            padding: 0.5rem 0.8rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: bold;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            z-index: 50;
+            margin-top: 2rem;
+            gap: 1rem;
         }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4">
 
-    <div class="lang-toggle" id="languageToggle">EN / HI</div>
+    <div class="lang-toggle" id="languageToggle">EN / HI / MR</div>
 
-    <main class="w-full max-w-2xl">
+    <div class="main-content-area w-full max-w-2xl">
 
         <div id="welcomeScreen" class="card-container">
             <div id="welcomeTopStepper" class="stepper-container"></div>
-            <div class="logo-placeholder" data-en="Your Logo" data-hi="आपका लोगो">Your Logo</div>
-            <h1 class="section-header" data-en="Uday Kiran" data-hi="उदय किरण">Uday Kiran</h1>
-            <h2 class="section-subheader" data-en="Your personalized journey to a smoke-free life begins now." data-hi="धूम्रपान-मुक्त जीवन के लिए आपकी व्यक्तिगत यात्रा अब शुरू होती है।">Your personalized journey to a smoke-free life begins now.</h2>
+            <h1 class="section-header" data-en="Uday Kiran" data-hi="उदय किरण" data-mr="उदय किरण">Uday Kiran</h1>
+            <h2 class="section-subheader" data-en="Your personalized journey to a smoke-free life begins now." data-hi="धूम्रपान-मुक्त जीवन के लिए आपकी व्यक्तिगत यात्रा अब शुरू होती है।" data-mr="धूम्रपान-मुक्त जीवनासाठी तुमचा वैयक्तिक प्रवास आता सुरू होत आहे.">Your personalized journey...</h2>
             
-            <div class="w-full text-left space-y-4">
+            <div class="form-section space-y-4 text-left">
                 <div>
-                    <label for="userName" class="block text-sm font-medium mb-1 text-gray-700" data-en="Your Name" data-hi="आपका नाम">Your Name</label>
-                    <input type="text" id="userName" class="input-field w-full" placeholder="e.g., Ramesh" data-en-placeholder="e.g., Ramesh" data-hi-placeholder="जैसे, रमेश">
+                    <label for="userName" class="block text-sm font-medium mb-1" data-en="Your Name" data-hi="आपका नाम" data-mr="तुमचे नाव">Your Name</label>
+                    <input type="text" id="userName" class="input-field" placeholder="e.g., Ramesh">
                 </div>
                 <div>
-                    <label for="dob" class="block text-sm font-medium mb-1 text-gray-700" data-en="Date of Birth" data-hi="जन्म तिथि">Date of Birth</label>
-                    <input type="date" id="dob" class="input-field w-full">
+                    <label for="dob" class="block text-sm font-medium mb-1" data-en="Date of Birth" data-hi="जन्म तिथि" data-mr="जन्म तारीख">Date of Birth</label>
+                    <input type="date" id="dob" class="input-field">
                 </div>
                  <div>
-                    <label class="block text-sm font-medium mb-1 text-gray-700" data-en="Gender" data-hi="लिंग">Gender</label>
+                    <label class="block text-sm font-medium mb-1" data-en="Gender" data-hi="लिंग" data-mr="लिंग">Gender</label>
                     <div class="flex space-x-4">
-                        <label class="radio-option flex-1 flex items-center gap-2">
-                            <input type="radio" name="gender" value="male" class="gender-input"> <span data-en="Male" data-hi="पुरुष">Male</span>
-                        </label>
-                        <label class="radio-option flex-1 flex items-center gap-2">
-                            <input type="radio" name="gender" value="female" class="gender-input"> <span data-en="Female" data-hi="महिला">Female</span>
-                        </label>
+                        <label class="radio-option flex-1"><input type="radio" name="gender" value="male"> <span data-en="Male" data-hi="पुरुष" data-mr="पुरुष">Male</span></label>
+                        <label class="radio-option flex-1"><input type="radio" name="gender" value="female"> <span data-en="Female" data-hi="महिला" data-mr="स्त्री">Female</span></label>
                     </div>
                 </div>
+                <div>
+                    <label for="mood" class="block text-sm font-medium mb-1" data-en="Current Mood" data-hi="वर्तमान मनोदशा" data-mr="सध्याचा मूड">Current Mood</label>
+                    <select id="mood" class="input-field">
+                        <option value="serene" data-en="Calm and focused" data-hi="शांत और केंद्रित" data-mr="शांत आणि केंद्रित">Calm and focused</option>
+                        <option value="determined" data-en="Determined" data-hi="दृढ़ संकल्पित" data-mr="दृढनिश्चयी">Determined</option>
+                    </select>
+                </div>
             </div>
-            <div class="mt-8">
-                 <button class="app-button-primary" onclick="processWelcomeAndShowNext()">
-                    <span data-en="Start Your Journey" data-hi="अपनी यात्रा शुरू करें">Start Your Journey</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
+            <button class="app-button-primary mt-4" onclick="processWelcomeAndShowNext()">
+                <span data-en="Start Journey" data-hi="यात्रा शुरू करें" data-mr="प्रवास सुरू करा">Start Journey</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+        
+        <div id="congratulationsScreen" class="card-container text-center">
+            <div id="congratulationsTopStepper" class="stepper-container"></div>
+            <div class="text-6xl mb-4">🎉</div>
+            <h1 id="congratulationsScreenTitle" class="section-header" data-en="Congratulations!" data-hi="बधाई हो!" data-mr="अभिनंदन!">Congratulations!</h1>
+            <p class="section-subheader" data-en="You've taken a brave and important first step. We are proud of your commitment!" data-hi="आपने एक साहसिक और महत्वपूर्ण पहला कदम उठाया है। हमें आपकी प्रतिबद्धता पर गर्व है!" data-mr="तुम्ही एक धाडसी आणि महत्त्वाचे पाऊल उचलले आहे. तुमच्या वचनबद्धतेचा आम्हाला अभिमान आहे!">You've taken a brave step.</p>
+            <button class="app-button-primary mt-4" onclick="proceedFromCongratulations()">
+                <span data-en="Let's Continue!" data-hi="चलिए जारी रखें!" data-mr="चला पुढे जाऊया!">Let's Continue!</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <div id="quitDecisionScreen" class="card-container">
+            <div id="quitDecisionTopStepper" class="stepper-container"></div>
+            <h2 class="section-header" data-en="Your Quitting Decision" data-hi="आपका छोड़ने का निर्णय" data-mr="तुमचा सोडण्याचा निर्णय">Your Quitting Decision</h2>
+            <p class="section-subheader" data-en="When do you plan to become smoke-free?" data-hi="आप धूम्रपान-मुक्त कब होने की योजना बना रहे हैं?" data-mr="तुम्ही धूम्रपान-मुक्त कधी होण्याची योजना करत आहात?">When do you plan to become smoke-free?</p>
+            
+            <div class="w-full max-w-xs space-y-4">
+                <button class="app-button-primary w-full text-lg" onclick="setQuitDecision('now')"><i class="fa-solid fa-bolt-lightning"></i> <span data-en="Quit Now" data-hi="अभी छोड़ें" data-mr="आता सोडा">Quit Now</span></button>
+                <button class="app-button-secondary w-full" onclick="setQuitDecision('continue')"><i class="fa-solid fa-person-running"></i> <span data-en="Continue Quitting" data-hi="छोड़ना जारी रखें" data-mr="सोडणे सुरू ठेवा">Continue Quitting</span></button>
+            </div>
+            
+            <div id="quitDateInput" class="form-section mt-6" style="display:none;">
+                <label for="setQuitDate" class="block text-sm font-medium mb-1" data-en="Set Your Quit Date" data-hi="आपकी छोड़ने की तारीख" data-mr="तुमची सोडण्याची तारीख सेट करा">Set Your Quit Date</label>
+                <input type="date" id="setQuitDate" class="input-field">
+            </div>
+
+            <div class="button-group">
+                <button class="app-button-back" onclick="showScreen('congratulationsScreen')"><i class="fa-solid fa-arrow-left"></i> <span data-en="Back" data-hi="पीछे" data-mr="मागे">Back</span></button>
+                <button class="app-button-primary" onclick="processQuitDecision()"><span data-en="Next" data-hi="अगला" data-mr="पुढे">Next</span> <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+        
+        <div id="fagerstromTest" class="card-container">
+            <div id="fagerstromTopStepper" class="stepper-container"></div>
+            <h2 class="section-header" data-en="Dependence Assessment" data-hi="निर्भरता मूल्यांकन" data-mr="निर्भरता मूल्यांकन">Dependence Assessment</h2>
+            <p class="section-subheader" data-en="Please answer honestly to help us tailor your plan." data-hi="आपकी योजना को अनुकूलित करने में हमारी सहायता के लिए कृपया ईमानदारी से उत्तर दें।" data-mr="तुमची योजना तयार करण्यात आम्हाला मदत करण्यासाठी कृपया प्रामाणिकपणे उत्तरे द्या.">Please answer honestly...</p>
+            
+            <div id="fagerstromQuestionContainer" class="form-section text-left"></div>
+            
+            <div class="button-group">
+                <button class="app-button-back" id="fagerstromPrevBtn" style="display: none;" onclick="prevFagerstromQuestion()"><i class="fa-solid fa-arrow-left"></i> <span data-en="Previous" data-hi="पिछला" data-mr="मागील">Previous</span></button>
+                <button class="app-button-primary ml-auto" id="fagerstromNextBtn" onclick="nextFagerstromQuestion()"><span data-en="Next" data-hi="अगला" data-mr="पुढे">Next</span> <i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
 
         <div id="healthOverviewScreen" class="card-container">
-             <div id="healthOverviewTopStepper" class="stepper-container"></div>
-             <h2 class="section-header" data-en="Your Health Overview" data-hi="आपका स्वास्थ्य अवलोकन">Your Health Overview</h2>
-             <p class="section-subheader" data-en="This visual represents the current impact of tobacco on your well-being, based on your assessment." data-hi="यह दृश्य आपके मूल्यांकन के आधार पर आपके स्वास्थ्य पर तंबाकू के वर्तमान प्रभाव को दर्शाता है।">This visual represents the current impact of tobacco on your well-being, based on your assessment.</p>
-            
-            <div class="grid md:grid-cols-2 w-full gap-8 items-start">
+            <div id="healthOverviewTopStepper" class="stepper-container"></div>
+            <h2 class="section-header" data-en="Your Health Overview" data-hi="आपका स्वास्थ्य अवलोकन" data-mr="तुमचे आरोग्य अवलोकन">Your Health Overview</h2>
+            <p class="section-subheader" data-en="This visual represents the current impact of tobacco on your well-being." data-hi="यह दृश्य आपके स्वास्थ्य पर तंबाकू के वर्तमान प्रभाव को दर्शाता है।" data-mr="हे दृश्य तुमच्या आरोग्यावर तंबाखूच्या सध्याच्या परिणामाचे प्रतिनिधित्व करते.">This visual represents...</p>
+           
+            <div class="w-full grid md:grid-cols-2 gap-8 items-start">
                 <div id="healthImpactChart" class="w-full space-y-6">
-                    <div class="health-bar-container">
-                        <i class="fa-solid fa-lungs health-bar-icon"></i>
-                        <div class="health-bar-main">
-                            <div class="health-bar-label">
-                                <span data-en="Lung Health" data-hi="फेफड़ों का स्वास्थ्य">Lung Health</span>
-                                <span class="health-bar-value font-semibold"></span>
-                            </div>
-                            <div class="health-bar-track"><div id="lungImpactBar" class="health-bar"></div></div>
-                        </div>
-                    </div>
-                    <div class="health-bar-container">
-                        <i class="fa-solid fa-heart-pulse health-bar-icon"></i>
-                        <div class="health-bar-main">
-                            <div class="health-bar-label">
-                                <span data-en="Cardiovascular" data-hi="हृदय-सम्बन्धी">Cardiovascular</span>
-                                <span class="health-bar-value font-semibold"></span>
-                            </div>
-                            <div class="health-bar-track"><div id="heartImpactBar" class="health-bar"></div></div>
-                        </div>
-                    </div>
-                    <div class="health-bar-container">
-                        <i class="fa-solid fa-brain health-bar-icon"></i>
-                        <div class="health-bar-main">
-                            <div class="health-bar-label">
-                                <span data-en="Mental Clarity" data-hi="मानसिक स्पष्टता">Mental Clarity</span>
-                                <span class="health-bar-value font-semibold"></span>
-                            </div>
-                            <div class="health-bar-track"><div id="mindImpactBar" class="health-bar"></div></div>
-                        </div>
-                    </div>
+                    <div class="health-bar-container"><i class="fa-solid fa-lungs health-bar-icon"></i><div class="health-bar-main"><div class="health-bar-label"><span data-en="Lung Health" data-hi="फेफड़े" data-mr="फुफ्फुस">Lung</span><span class="health-bar-value"></span></div><div class="health-bar-track"><div id="lungImpactBar" class="health-bar"></div></div></div></div>
+                    <div class="health-bar-container"><i class="fa-solid fa-heart-pulse health-bar-icon"></i><div class="health-bar-main"><div class="health-bar-label"><span data-en="Cardiovascular" data-hi="हृदय" data-mr="हृदय">Cardio</span><span class="health-bar-value"></span></div><div class="health-bar-track"><div id="heartImpactBar" class="health-bar"></div></div></div></div>
+                    <div class="health-bar-container"><i class="fa-solid fa-brain health-bar-icon"></i><div class="health-bar-main"><div class="health-bar-label"><span data-en="Mental Clarity" data-hi="मन" data-mr="मन">Mind</span><span class="health-bar-value"></span></div><div class="health-bar-track"><div id="mindImpactBar" class="health-bar"></div></div></div></div>
                 </div>
-
                 <div id="healthInsights" class="space-y-3">
-                    <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                        <i class="fa-solid fa-lightbulb text-yellow-500"></i>
-                        <span data-en="Key Insights" data-hi="मुख्य अंतर्दृष्टि">Key Insights</span>
-                    </h3>
-                    <p id="healthScoreDisplay" class="text-sm font-semibold text-gray-700"></p>
+                    <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2"><i class="fa-solid fa-lightbulb text-yellow-500"></i><span data-en="Key Insights" data-hi="अंतर्दृष्टि" data-mr="मुख्य अंतर्दृष्टी">Key Insights</span></h3>
+                    <p id="healthScoreDisplay" class="text-sm font-semibold"></p>
                     <p id="healthAdviceText" class="text-sm text-gray-600 leading-relaxed"></p>
                 </div>
             </div>
 
-             <div class="mt-8 w-full flex justify-between items-center">
-                <button class="app-button-back" onclick="showScreen('fagerstromTest')"><i class="fa-solid fa-arrow-left"></i> <span data-en="Previous" data-hi="पिछला">Previous</span></button>
-                <button class="app-button-primary" onclick="showScreen('cravingManagementScreen')">
-                    <span data-en="Next Step" data-hi="अगला कदम">Next Step</span> <i class="fa-solid fa-arrow-right"></i>
-                </button>
+            <div class="button-group">
+               <button class="app-button-back" onclick="showScreen('fagerstromTest')"><i class="fa-solid fa-arrow-left"></i> <span data-en="Previous" data-hi="पिछला" data-mr="मागील">Previous</span></button>
+               <button class="app-button-primary" onclick="showScreen('progressTracker')"><span data-en="See My Progress" data-hi="प्रगति देखें" data-mr="माझी प्रगती पहा">See My Progress</span> <i class="fa-solid fa-arrow-right"></i></button>
+           </div>
+       </div>
+       
+        <div id="progressTracker" class="card-container">
+            <div id="progressTrackerTopStepper" class="stepper-container"></div>
+            <h2 class="section-header" data-en="Your Progress Tracker" data-hi="आपकी प्रगति ट्रैकर" data-mr="तुमचा प्रगती ट्रॅकर">Your Progress Tracker</h2>
+            <p class="section-subheader" data-en="Celebrate your achievements! Every moment counts." data-hi="अपनी उपलब्धियों का जश्न मनाएं! हर पल मायने रखता है।" data-mr="तुमचे यश साजरे करा! प्रत्येक क्षण महत्त्वाचा आहे.">Celebrate your achievements!</p>
+            
+            <div class="grid grid-cols-2 gap-4 text-center mb-6 w-full max-w-md">
+                <div class="bg-gray-100 p-4 rounded-lg"><div class="text-2xl font-bold text-teal-600" id="daysFree">0</div><div class="text-sm text-gray-500" data-en="Days Smoke-Free" data-hi="धूम्रपान-मुक्त दिन" data-mr="धूम्रपान-मुक्त दिवस">Days Free</div></div>
+                <div class="bg-gray-100 p-4 rounded-lg"><div class="text-2xl font-bold text-teal-600" id="moneySaved">₹0</div><div class="text-sm text-gray-500" data-en="Money Saved" data-hi="बचाया गया पैसा" data-mr="पैसे वाचवले">Money Saved</div></div>
             </div>
-        </div>
 
-        </main>
+            <div id="journeyLog" class="w-full max-w-md space-y-3 max-h-64 scrollable-content-area p-3"></div>
+
+            <div class="button-group">
+               <button class="app-button-back" onclick="showScreen('healthOverviewScreen')"><i class="fa-solid fa-arrow-left"></i> <span data-en="Overview" data-hi="अवलोकन" data-mr="अवलोकन">Overview</span></button>
+               <button class="app-button-primary" onclick="showScreen('welcomeScreen')"><i class="fa-solid fa-house"></i> <span data-en="Back to Home" data-hi="होम पर वापस" data-mr="घरी परत जा">Back to Home</span></button>
+           </div>
+       </div>
+
+    </div>
 
     <script>
-        // --- SCRIPT FROM PREVIOUS VERSION ---
-        // The JavaScript logic remains largely the same.
-        // I will focus on the parts that need updating for the new visual style.
-        // A full script would be too long, so this is an illustrative example.
-
+        // --- COMPLETE SCRIPT ---
         let currentUser = {};
-        let fagerstromScore = 8; // Example score for demonstration
-        let nicotineDependenceLevel = 'High'; // Example level
-        let currentLanguage = 'en';
+        let currentFagerstromQuestion = 0;
+        let fagerstromAnswers = Array(6).fill(null);
+        let fagerstromScore = 0;
+        let nicotineDependenceLevel = '';
+        let quitDate = null;
+        
+        const languages = ['en', 'hi', 'mr'];
+        let currentLanguageIndex = 0;
+        let currentLanguage = languages[currentLanguageIndex];
 
-        const screens = [
-            { id: 'welcomeScreen', label: { en: 'Start', hi: 'शुरू करें' } },
-            // ... add other screens here
-            { id: 'healthOverviewScreen', label: { en: 'Overview', hi: 'अवलोकन' } }
-            // ...
-        ];
-
+        const fagerstromQuestions = [ { heading: { en: "First Cigarette of the Day", hi: "दिन की पहली सिगरेट", mr: "दिवसाची पहिली सिगारेट" }, intro: { en: "How soon after waking do you feel the urge for your first cigarette?", hi: "जागने के कितनी देर बाद आपको अपनी पहली सिगरेट की इच्छा महसूस होती है?", mr: "झोपेतून उठल्यानंतर किती वेळाने तुम्हाला पहिली सिगारेट ओढण्याची इच्छा होते?" }, options: [ { text: { en: "Within 5 minutes", hi: "5 मिनट के भीतर", mr: "5 मिनिटांच्या आत" }, score: 3 }, { text: { en: "5-30 minutes", hi: "5-30 मिनट में", mr: "5-30 मिनिटांत" }, score: 2 }, { text: { en: "31-60 minutes", hi: "31-60 मिनट में", mr: "31-60 मिनिटांत" }, score: 1 }, { text: { en: "After 60 minutes", hi: "60 मिनट के बाद", mr: "60 मिनिटांनंतर" }, score: 0 } ] }, { heading: { en: "Smoking in Restricted Areas", hi: "प्रतिबंधित क्षेत्रों में धूम्रपान", mr: "प्रतिबंधित ठिकाणी धूम्रपान" }, intro: { en: "Do you find it difficult to refrain from smoking in places where it is forbidden?", hi: "क्या आपको उन जगहों पर धूम्रपान करने से बचना मुश्किल लगता है जहाँ यह मना है?", mr: "ज्या ठिकाणी धूम्रपान करण्यास मनाई आहे तेथे धूम्रपान टाळणे तुम्हाला कठीण वाटते का?" }, options: [ { text: { en: "Yes", hi: "हाँ", mr: "होय" }, score: 1 }, { text: { en: "No", hi: "नहीं", mr: "नाही" }, score: 0 } ] }, { heading: { en: "Most Important Cigarette", hi: "सबसे महत्वपूर्ण सिगरेट", mr: "सर्वात महत्त्वाची सिगारेट" }, intro: { en: "Which cigarette would you hate to give up most?", hi: "आप कौन सी सिगरेट छोड़ना सबसे ज़्यादा नापसंद करेंगे?", mr: "कोणती सिगारेट सोडण्याचा तुम्हाला सर्वात जास्त तिरस्कार वाटेल?" }, options: [ { text: { en: "The first one in the morning", hi: "सुबह की पहली सिगरेट", mr: "सकाळची पहिली" }, score: 1 }, { text: { en: "Any other", hi: "कोई और", mr: "इतर कोणतीही" }, score: 0 } ] }, { heading: { en: "Daily Cigarette Consumption", hi: "दैनिक सिगरेट की खपत", mr: "दैनंदिन सिगारेटचा वापर" }, intro: { en: "How many cigarettes a day do you smoke?", hi: "आप एक दिन में कितनी सिगरेट पीते हैं?", mr: "तुम्ही दिवसाला किती सिगारेट ओढता?" }, options: [ { text: { en: "10 or less", hi: "10 या उससे कम", mr: "10 किंवा कमी" }, score: 0 }, { text: { en: "11-20", hi: "11-20", mr: "11-20" }, score: 1 }, { text: { en: "21-30", hi: "21-30", mr: "21-30" }, score: 2 }, { text: { en: "31 or more", hi: "31 या ज़्यादा", mr: "31 किंवा जास्त" }, score: 3 } ] }, { heading: { en: "Morning Smoking Frequency", hi: "सुबह धूम्रपान की आवृत्ति", mr: "सकाळी धूम्रपानाची वारंवारता" }, intro: { en: "Do you smoke more frequently during the first hours after waking than during the rest of the day?", hi: "क्या आप जागने के बाद पहले घंटों में दिन के बाकी हिस्सों की तुलना में अधिक बार धूम्रपान करते हैं?", mr: "तुम्ही उठल्यानंतर पहिल्या काही तासांत दिवसाच्या इतर वेळेपेक्षा जास्त धूम्रपान करता का?" }, options: [ { text: { en: "Yes", hi: "हाँ", mr: "होय" }, score: 1 }, { text: { en: "No", hi: "नहीं", mr: "नाही" }, score: 0 } ] }, { heading: { en: "Smoking When Ill", hi: "बीमार होने पर धूम्रपान", mr: "आजारी असताना धूम्रपान" }, intro: { en: "Do you smoke even if you are so ill that you are in bed most of the day?", hi: "आप तब भी धूम्रपान करते हैं जब आप इतने बीमार हों कि आप दिन के अधिकांश समय बिस्तर पर हों?", mr: "तुम्ही इतके आजारी असाल की दिवसातील बहुतेक वेळ अंथरुणावर असता, तरीही तुम्ही धूम्रपान करता का?" }, options: [ { text: { en: "Yes", hi: "हाँ", mr: "होय" }, score: 1 }, { text: { en: "No", hi: "नहीं", mr: "नाही" }, score: 0 } ] } ];
+        
+        const screens = ['welcomeScreen', 'congratulationsScreen', 'quitDecisionScreen', 'fagerstromTest', 'healthOverviewScreen', 'progressTracker'];
+        
         const translations = {
-            highDependenceAdvice: { en: "Your dependence has a <strong>significant impact</strong>. Focusing on cessation is crucial for improving lung, cardiovascular, and mental health. Let's build a plan.", hi: "आपकी निर्भरता का <strong>महत्वपूर्ण प्रभाव</strong> है। फेफड़ों, हृदय और मानसिक स्वास्थ्य में सुधार के लिए समाप्ति पर ध्यान केंद्रित करना महत्वपूर्ण है। आइए एक योजना बनाएं।" },
-            moderateDependenceAdvice: { en: "Your tobacco use has a <strong>moderate impact</strong>. This is a critical time to implement effective strategies to prevent further damage. Consistent effort will bring great results.", hi: "आपके तंबाकू के उपयोग का <strong>मध्यम प्रभाव</strong> है। आगे की क्षति को रोकने के लिए प्रभावी रणनीतियों को लागू करने का यह एक महत्वपूर्ण समय है। लगातार प्रयास से अच्छे परिणाम मिलेंगे।" },
-            lowDependenceAdvice: { en: "Your dependence is <strong>low</strong>, a great advantage! This gives you a strong foundation. Focus on reinforcing healthy habits to stay smoke-free.", hi: "आपकी निर्भरता <strong>कम</strong> है, यह एक बड़ा फायदा है! यह आपको एक मजबूत आधार देता है। धूम्रपान मुक्त रहने के लिए स्वस्थ आदतों को मजबूत करने पर ध्यान दें।" },
-            overallImpact: { en: "Overall Impact", hi: "कुल प्रभाव"},
-            fagerstromScoreLabel: { en: "Fagerstrom Score", hi: "फ़ेगरस्ट्रॉम स्कोर" }
+            highDependenceAdvice: { en: "Your dependence has a <strong>significant impact</strong>. Focusing on cessation is crucial for improving lung, cardiovascular, and mental health. Let's build a plan.", hi: "आपकी निर्भरता का <strong>महत्वपूर्ण प्रभाव</strong> है। फेफड़ों, हृदय और मानसिक स्वास्थ्य में सुधार के लिए समाप्ति पर ध्यान केंद्रित करना महत्वपूर्ण है। आइए एक योजना बनाएं।", mr: "तुमची निर्भरता <strong>लक्षणीय परिणाम</strong> करते. फुफ्फुस, हृदय व रक्तवाहिन्यासंबंधी आणि मानसिक आरोग्य सुधारण्यासाठी धूम्रपान सोडण्यावर लक्ष केंद्रित करणे महत्त्वाचे आहे. चला एक योजना तयार करूया." },
+            moderateDependenceAdvice: { en: "Your tobacco use has a <strong>moderate impact</strong>. This is a critical time to implement effective strategies to prevent further damage. Consistent effort will bring great results.", hi: "आपके तंबाकू के उपयोग का <strong>मध्यम प्रभाव</strong> है। आगे की क्षति को रोकने के लिए प्रभावी रणनीतियों को लागू करने का यह एक महत्वपूर्ण समय है। लगातार प्रयास से अच्छे परिणाम मिलेंगे।", mr: "तुमच्या तंबाखूच्या वापराचा <strong>मध्यम परिणाम</strong> होतो. पुढील नुकसान टाळण्यासाठी प्रभावी रणनीती लागू करण्याची ही एक महत्त्वाची वेळ आहे. सातत्यपूर्ण प्रयत्नांना चांगले परिणाम मिळतील." },
+            lowDependenceAdvice: { en: "Your dependence is <strong>low</strong>, a great advantage! This gives you a strong foundation. Focus on reinforcing healthy habits to stay smoke-free.", hi: "आपकी निर्भरता <strong>कम</strong> है, यह एक बड़ा फायदा है! यह आपको एक मजबूत आधार देता है। धूम्रपान मुक्त रहने के लिए स्वस्थ आदतों को मजबूत करने पर ध्यान दें।", mr: "तुमची निर्भरता <strong>कमी</strong> आहे, हा एक मोठा फायदा आहे! हे तुम्हाला एक मजबूत पाया देते. धूम्रपानमुक्त राहण्यासाठी निरोगी सवयी मजबूत करण्यावर लक्ष केंद्रित करा." },
+            overallImpact: { en: "Overall Impact", hi: "कुल प्रभाव", mr: "एकूण परिणाम"},
+            fagerstromScoreLabel: { en: "Score", hi: "स्कोर", mr: "गुण" }
         };
 
-        function getTranslatedText(key, lang = currentLanguage) {
-            return translations[key]?.[lang] || translations[key]?.['en'] || key;
-        }
+        function getTranslatedText(key, lang = currentLanguage) { return translations[key]?.[lang] || translations[key]?.['en'] || key; }
 
         function translatePage(lang) {
             document.querySelectorAll('[data-en]').forEach(el => {
-                const text = lang === 'hi' ? el.getAttribute('data-hi') : el.getAttribute('data-en');
-                if (text) el.innerHTML = text; // Use innerHTML to allow for <strong> tags etc.
+                const text = el.getAttribute(`data-${lang}`) || el.getAttribute('data-en');
+                if (text) {
+                    const icon = el.querySelector('i');
+                    if (icon) {
+                        el.innerHTML = text;
+                        el.appendChild(icon.cloneNode(true));
+                    } else {
+                         el.innerHTML = text;
+                    }
+                }
             });
-            // ... rest of translation logic
-            generateHealthOverview(); // Re-run to update text
+             const activeScreen = document.querySelector('.card-container.current-screen');
+             if(activeScreen?.id === 'fagerstromTest') { showFagerstromQuestion(currentFagerstromQuestion); }
+             if(activeScreen?.id === 'healthOverviewScreen') { generateHealthOverview(); }
         }
 
         document.getElementById('languageToggle').addEventListener('click', () => {
-            currentLanguage = currentLanguage === 'en' ? 'hi' : 'en';
+            currentLanguageIndex = (currentLanguageIndex + 1) % languages.length;
+            currentLanguage = languages[currentLanguageIndex];
             translatePage(currentLanguage);
         });
 
         function createStepper(activeScreenId) {
             const container = document.createElement('div');
             container.className = 'stepper-container';
-            screens.forEach(screen => {
+            const activeIndex = screens.indexOf(activeScreenId);
+            screens.forEach((screenId, index) => {
                 const dot = document.createElement('div');
-                dot.className = `stepper-dot ${screen.id === activeScreenId ? 'active' : ''}`;
+                dot.className = `stepper-dot ${index <= activeIndex ? 'active' : ''}`;
                 container.appendChild(dot);
             });
             return container;
         }
 
         function showScreen(screenId) {
-            document.querySelectorAll('.card-container').forEach(screen => {
-                screen.classList.remove('current-screen');
-            });
+            document.querySelectorAll('.card-container').forEach(screen => screen.classList.remove('current-screen'));
             const activeScreenElement = document.getElementById(screenId);
             if (activeScreenElement) {
                 activeScreenElement.classList.add('current-screen');
@@ -408,86 +393,142 @@
                     stepperPlaceholder.innerHTML = '';
                     stepperPlaceholder.appendChild(createStepper(screenId));
                 }
+                if (screenId === 'healthOverviewScreen') { generateHealthOverview(); }
+                if (screenId === 'progressTracker') { updateProgressMetrics(); }
             }
-             if (screenId === 'healthOverviewScreen') {
-                 generateHealthOverview();
-             }
         }
         
         function processWelcomeAndShowNext() {
-            // Logic to save user info
-            // For demo, we'll just move to the next screen
-            showScreen('healthOverviewScreen');
+            currentUser.name = document.getElementById('userName').value.trim();
+            if (!currentUser.name) { alert('Please enter your name.'); return; }
+            const congratsTitle = document.getElementById('congratulationsScreenTitle');
+            const name = currentUser.name;
+            congratsTitle.setAttribute('data-en', `Congratulations, ${name}!`);
+            congratsTitle.setAttribute('data-hi', `बधाई हो, ${name}!`);
+            congratsTitle.setAttribute('data-mr', `अभिनंदन, ${name}!`);
+            translatePage(currentLanguage);
+            showScreen('congratulationsScreen');
         }
 
+        function proceedFromCongratulations() { showScreen('quitDecisionScreen'); }
+        let quitPlan = '';
+        function setQuitDecision(decision) {
+            quitPlan = decision;
+            const quitDateInput = document.getElementById('quitDateInput');
+            const setQuitDateElem = document.getElementById('setQuitDate');
+            if (decision === 'now' || decision === 'continue') {
+                quitDateInput.style.display = 'block';
+                if (!setQuitDateElem.value) {
+                    setQuitDateElem.value = new Date().toISOString().slice(0, 10);
+                }
+            }
+        }
+        function processQuitDecision() {
+            if (!quitPlan) { alert('Please select a plan.'); return; }
+            if (quitPlan === 'now' || quitPlan === 'continue') {
+                const dateInput = document.getElementById('setQuitDate').value;
+                if (!dateInput) { alert('Please set a quit date.'); return; }
+                currentUser.quitDate = dateInput;
+                quitDate = new Date(dateInput);
+            }
+            showScreen('fagerstromTest');
+        }
+
+        function showFagerstromQuestion(index) {
+            currentFagerstromQuestion = index;
+            const q = fagerstromQuestions[index];
+            const container = document.getElementById('fagerstromQuestionContainer');
+            container.innerHTML = `<h3 class="font-semibold text-lg mb-2">${q.heading[currentLanguage]}</h3><p class="text-gray-600 mb-4">${q.intro[currentLanguage]}</p><div class="space-y-3">${q.options.map((option, i) => `<label class="radio-option"><input type="radio" name="fagerstromQ" value="${i}" onchange="fagerstromAnswers[${index}] = parseInt(this.value)" ${fagerstromAnswers[index] === i ? 'checked' : ''}>${option.text[currentLanguage]}</label>`).join('')}</div>`;
+            document.getElementById('fagerstromPrevBtn').style.display = index === 0 ? 'none' : 'inline-flex';
+            const nextBtn = document.getElementById('fagerstromNextBtn').querySelector('span');
+            if(index === fagerstromQuestions.length - 1){
+                nextBtn.setAttribute('data-en', 'Finish Test');
+                nextBtn.setAttribute('data-hi', 'टेस्ट पूरा करें');
+                nextBtn.setAttribute('data-mr', 'चाचणी पूर्ण करा');
+            } else {
+                nextBtn.setAttribute('data-en', 'Next');
+                nextBtn.setAttribute('data-hi', 'अगला');
+                nextBtn.setAttribute('data-mr', 'पुढे');
+            }
+            translatePage(currentLanguage);
+        }
+        function nextFagerstromQuestion() {
+            if (fagerstromAnswers[currentFagerstromQuestion] === null) { alert('Please select an answer.'); return; }
+            if (currentFagerstromQuestion < fagerstromQuestions.length - 1) {
+                showFagerstromQuestion(currentFagerstromQuestion + 1);
+            } else {
+                calculateFagerstromScore();
+                showScreen('healthOverviewScreen');
+            }
+        }
+        function prevFagerstromQuestion() { showFagerstromQuestion(currentFagerstromQuestion - 1); }
+        
+        function calculateFagerstromScore() {
+            fagerstromScore = fagerstromAnswers.reduce((total, answerIndex, qIndex) => total + fagerstromQuestions[qIndex].options[answerIndex].score, 0);
+            if (fagerstromScore <= 3) nicotineDependenceLevel = 'Low';
+            else if (fagerstromScore <= 6) nicotineDependenceLevel = 'Moderate';
+            else nicotineDependenceLevel = 'High';
+        }
+        
         function generateHealthOverview() {
             const adviceText = document.getElementById('healthAdviceText');
             const healthScoreDisplay = document.getElementById('healthScoreDisplay');
-            const lungBar = document.getElementById('lungImpactBar');
-            const heartBar = document.getElementById('heartImpactBar');
-            const mindBar = document.getElementById('mindImpactBar');
+            if (!adviceText) return;
 
-            let advice = "";
-            let lungImpact, heartImpact, mindImpact;
-            let dependenceText = nicotineDependenceLevel;
+            let advice, lungImpact, heartImpact, mindImpact, dependenceText;
+            const highImpact = { percentage: 85, label_en: 'High', label_hi: 'उच्च', label_mr: 'उच्च', color: 'var(--danger-color)' };
+            const moderateImpact = { percentage: 60, label_en: 'Moderate', label_hi: 'मध्यम', label_mr: 'मध्यम', color: 'var(--warning-color)' };
+            const lowImpact = { percentage: 30, label_en: 'Low', label_hi: 'कम', label_mr: 'कमी', color: 'var(--success-color)' };
 
-            const highImpact = { percentage: 85, label_en: 'High', label_hi: 'उच्च', color: '#ef4444' };
-            const moderateImpact = { percentage: 60, label_en: 'Moderate', label_hi: 'मध्यम', color: '#f59e0b' };
-            const lowImpact = { percentage: 30, label_en: 'Low', label_hi: 'कम', color: '#22c55e' };
-
-            if (nicotineDependenceLevel === 'High') {
-                advice = getTranslatedText('highDependenceAdvice');
-                lungImpact = highImpact;
-                heartImpact = highImpact;
-                mindImpact = moderateImpact;
-            } else if (nicotineDependenceLevel === 'Moderate') {
-                advice = getTranslatedText('moderateDependenceAdvice');
-                lungImpact = moderateImpact;
-                heartImpact = moderateImpact;
-                mindImpact = lowImpact;
-            } else { // Low
-                advice = getTranslatedText('lowDependenceAdvice');
-                lungImpact = lowImpact;
-                heartImpact = lowImpact;
-                mindImpact = { percentage: 15, label_en: 'Low', label_hi: 'कम', color: '#22c55e' };
-            }
-
-            // Update text
-            if(currentLanguage === 'hi') {
-                if (nicotineDependenceLevel === 'Low') dependenceText = "कम";
-                else if (nicotineDependenceLevel === 'Moderate') dependenceText = "मध्यम";
-                else if (nicotineDependenceLevel === 'High') dependenceText = "उच्च";
-            }
+            if (nicotineDependenceLevel === 'High') { [advice, lungImpact, heartImpact, mindImpact] = [getTranslatedText('highDependenceAdvice'), highImpact, highImpact, moderateImpact]; }
+            else if (nicotineDependenceLevel === 'Moderate') { [advice, lungImpact, heartImpact, mindImpact] = [getTranslatedText('moderateDependenceAdvice'), moderateImpact, moderateImpact, lowImpact]; }
+            else { [advice, lungImpact, heartImpact, mindImpact] = [getTranslatedText('lowDependenceAdvice'), lowImpact, lowImpact, { percentage: 15, label_en: 'Low', label_hi: 'कम', label_mr: 'कमी', color: 'var(--success-color)' }]; }
+            
+            dependenceText = lungImpact[`label_${currentLanguage}`] || lungImpact.label_en;
             healthScoreDisplay.innerHTML = `${getTranslatedText('overallImpact')}: <strong style="color: ${lungImpact.color}">${dependenceText}</strong> (${getTranslatedText('fagerstromScoreLabel')}: ${fagerstromScore})`;
             adviceText.innerHTML = advice;
-
-            // Update bars
-            const updateBar = (barElement, impactData) => {
+            
+            const updateBar = (barId, impactData) => {
+                const barElement = document.getElementById(barId);
                 if (!barElement) return;
                 barElement.style.width = `${impactData.percentage}%`;
                 barElement.style.backgroundColor = impactData.color;
                 const valueLabel = barElement.closest('.health-bar-main').querySelector('.health-bar-value');
-                if (valueLabel) {
-                    valueLabel.textContent = (currentLanguage === 'hi') ? impactData.label_hi : impactData.label_en;
-                    valueLabel.style.color = impactData.color;
-                }
+                valueLabel.textContent = impactData[`label_${currentLanguage}`] || impactData.label_en;
+                valueLabel.style.color = impactData.color;
             };
-            
-            // Use setTimeout to allow the screen to render before animating bars
-            setTimeout(() => {
-                updateBar(lungBar, lungImpact);
-                updateBar(heartBar, heartImpact);
-                updateBar(mindBar, mindImpact);
-            }, 100);
+            setTimeout(() => { updateBar('lungImpactBar', lungImpact); updateBar('heartImpactBar', heartImpact); updateBar('mindImpactBar', mindImpact); }, 100);
         }
-
-        // Initial Load
+        
+        function updateProgressMetrics() {
+            if (!quitDate) {
+                document.getElementById('journeyLog').innerHTML = `<div class="bg-white p-3 rounded-md shadow-sm text-sm" data-en="Set a quit date to track your progress!" data-hi="अपनी प्रगति को ट्रैक करने के लिए छोड़ने की तारीख निर्धारित करें!" data-mr="तुमची प्रगती ट्रॅक करण्यासाठी सोडण्याची तारीख निश्चित करा!">Set a quit date to track your progress!</div>`;
+                translatePage(currentLanguage);
+                return;
+            }
+            const now = new Date();
+            const timeDiff = now.getTime() - quitDate.getTime();
+            const days = Math.max(0, Math.floor(timeDiff / (1000 * 60 * 60 * 24)));
+            document.getElementById('daysFree').textContent = days;
+            
+            const cigarettesPerDay = (fagerstromAnswers[3] !== null ? (fagerstromAnswers[3] + 1) * 10 - 5 : 10);
+            const moneySaved = days * cigarettesPerDay * 15;
+            document.getElementById('moneySaved').textContent = `₹${moneySaved.toLocaleString()}`;
+            
+            const journeyLog = document.getElementById('journeyLog');
+            const journeyText = {
+                en: `🗓️ Your journey started on ${quitDate.toLocaleDateString()}. You are doing great!`,
+                hi: `🗓️ आपकी यात्रा ${quitDate.toLocaleDateString()} को शुरू हुई। आप बहुत अच्छा कर रहे हैं!`,
+                mr: `🗓️ तुमचा प्रवास ${quitDate.toLocaleDateString()} रोजी सुरू झाला. तुम्ही खूप छान करत आहात!`
+            }
+            journeyLog.innerHTML = `<div class="bg-white p-3 rounded-md shadow-sm text-sm">${journeyText[currentLanguage]}</div>`;
+        }
+        
         document.addEventListener('DOMContentLoaded', () => {
-            // loadUserData(); // You would uncomment this in your full app
             showScreen('welcomeScreen');
+            showFagerstromQuestion(0);
             translatePage(currentLanguage);
         });
-
     </script>
 </body>
 </html>
