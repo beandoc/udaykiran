@@ -188,6 +188,15 @@
             margin-top: 2rem;
             gap: 1rem;
         }
+        
+        .testimonial-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4">
@@ -262,7 +271,69 @@
                 <button class="app-button-primary" onclick="processQuitDecision()"><span data-en="Next" data-hi="अगला" data-mr="पुढे">Next</span> <i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
-        
+
+        <div id="goalsMotivationsScreen" class="card-container">
+            <div id="goalsMotivationsTopStepper" class="stepper-container"></div>
+            <h2 class="section-header" data-en="Set Your Goals & Motivations" data-hi="अपने लक्ष्य और प्रेरणाएँ निर्धारित करें" data-mr="तुमचे ध्येय आणि प्रेरणा निश्चित करा">Set Your Goals & Motivations</h2>
+            <p class="section-subheader" data-en="What are your reasons and goals for quitting tobacco?" data-hi="तंबाकू छोड़ने के आपके क्या कारण और लक्ष्य हैं?" data-mr="तंबाखू सोडण्याची तुमची कारणे आणि ध्येय काय आहेत?">What are your reasons and goals...</p>
+            
+            <div class="form-section space-y-4 text-left">
+                <div>
+                    <label for="mainGoal" class="block text-sm font-medium mb-1" data-en="My main goal is..." data-hi="मेरा मुख्य लक्ष्य है..." data-mr="माझे मुख्य ध्येय आहे...">My main goal is...</label>
+                    <input type="text" id="mainGoal" class="input-field" placeholder="e.g., Live a healthier life">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2" data-en="My motivations (select all that apply):" data-hi="मेरी प्रेरणाएँ (सभी लागू होने वाले चुनें):" data-mr="माझ्या प्रेरणा (सर्व लागू होणारे निवडा):">My motivations (select all that apply):</label>
+                    <div class="space-y-3">
+                        <label class="checkbox-option"><input type="checkbox" name="motivation" value="Improved Health"> <span data-en="Improved Health" data-hi="बेहतर स्वास्थ्य" data-mr="सुधारलेले आरोग्य">Improved Health</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="motivation" value="For my Family"> <span data-en="For my Family" data-hi="मेरे परिवार के लिए" data-mr="माझ्या कुटुंबासाठी">For my Family</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="motivation" value="Financial Savings"> <span data-en="Financial Savings" data-hi="वित्तीय बचत" data-mr="आर्थिक बचत">Financial Savings</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="motivation" value="Freedom from Addiction"> <span data-en="Freedom from Addiction" data-hi="लत से आजादी" data-mr="व्यसनापासून मुक्ती">Freedom from Addiction</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="motivation" value="To be a Role Model"> <span data-en="To be a Role Model" data-hi="एक आदर्श बनने के लिए" data-mr="आदर्श बनण्यासाठी">To be a Role Model</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="motivation" value="Better Smell/Taste"> <span data-en="Better Smell/Taste" data-hi="बेहतर गंध/स्वाद" data-mr="चांगला वास/चव">Better Smell/Taste</span></label>
+                    </div>
+                </div>
+                <div>
+                    <label for="otherMotivations" class="block text-sm font-medium mb-1" data-en="Other motivations (optional):" data-hi="अन्य प्रेरणाएँ (वैकल्पिक):" data-mr="इतर प्रेरणा (पर्यायी):">Other motivations (optional):</label>
+                    <input type="text" id="otherMotivations" class="input-field" placeholder="e.g., More energy for hobbies">
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="app-button-back" onclick="showScreen('quitDecisionScreen')"><i class="fa-solid fa-arrow-left"></i> <span data-en="Back" data-hi="पीछे" data-mr="मागे">Back</span></button>
+                <button class="app-button-primary" onclick="processGoalsMotivations()"><span data-en="Next" data-hi="अगला" data-mr="पुढे">Next</span> <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <div id="supportSystemScreen" class="card-container">
+            <div id="supportSystemTopStepper" class="stepper-container"></div>
+            <h2 class="section-header" data-en="Your Support System" data-hi="आपका समर्थन प्रणाली" data-mr="तुमची समर्थन प्रणाली">Your Support System</h2>
+            <p class="section-subheader" data-en="Nominate friends or family who can help you in tough times. This is optional and you can skip it." data-hi="उन दोस्तों या परिवार को नामांकित करें जो कठिन समय में आपकी मदद कर सकते हैं। यह वैकल्पिक है और आप इसे छोड़ सकते हैं।" data-mr="कठीण काळात तुम्हाला मदत करू शकणारे मित्र किंवा कुटुंब नामांकित करा. हे पर्यायी आहे आणि तुम्ही वगळू शकता.">Nominate friends or family...</p>
+            
+            <div class="form-section space-y-4 text-left">
+                <div>
+                    <label for="supporterName" class="block text-sm font-medium mb-1" data-en="Supporter's Name" data-hi="समर्थक का नाम" data-mr="समर्थकाचे नाव">Supporter's Name</label>
+                    <input type="text" id="supporterName" class="input-field" placeholder="e.g., My sister, Priya">
+                </div>
+                <div>
+                    <label for="supporterContact" class="block text-sm font-medium mb-1" data-en="Contact (Phone/Email - optional)" data-hi="संपर्क (फोन/ईमेल - वैकल्पिक)" data-mr="संपर्क (फोन/ईमेल - पर्यायी)">Contact (Phone/Email - optional)</label>
+                    <input type="text" id="supporterContact" class="input-field" placeholder="e.g., priya@example.com or 9876543210">
+                </div>
+                <button class="app-button-secondary w-full" onclick="addSupporter()">
+                    <i class="fa-solid fa-user-plus"></i> <span data-en="Add Supporter" data-hi="समर्थक जोड़ें" data-mr="समर्थक जोडा">Add Supporter</span>
+                </button>
+                <div id="supportersList" class="scrollable-content-area mt-4">
+                    <p id="noSupportersAdded" class="text-gray-500" data-en="No supporters added yet." data-hi="अभी तक कोई समर्थक नहीं जोड़ा गया है।" data-mr="अद्याप कोणताही समर्थक जोडला नाही.">No supporters added yet.</p>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="app-button-back" onclick="showScreen('goalsMotivationsScreen')"><i class="fa-solid fa-arrow-left"></i> <span data-en="Back" data-hi="पीछे" data-mr="मागे">Back</span></button>
+                <button class="app-button-secondary" onclick="skipSupportSystem()"><span data-en="Skip" data-hi="छोड़ें" data-mr="वगळा">Skip</span></button>
+                <button class="app-button-primary" onclick="showScreen('fagerstromTest')"><span data-en="Next" data-hi="अगला" data-mr="पुढे">Next</span> <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+       
         <div id="fagerstromTest" class="card-container">
             <div id="fagerstromTopStepper" class="stepper-container"></div>
             <h2 class="section-header" data-en="Dependence Assessment" data-hi="निर्भरता मूल्यांकन" data-mr="निर्भरता मूल्यांकन">Dependence Assessment</h2>
@@ -295,57 +366,293 @@
             </div>
 
             <div class="button-group">
-               <button class="app-button-back" onclick="showScreen('fagerstromTest')"><i class="fa-solid fa-arrow-left"></i> <span data-en="Previous" data-hi="पिछला" data-mr="मागील">Previous</span></button>
-               <button class="app-button-primary" onclick="showScreen('progressTracker')"><span data-en="See My Progress" data-hi="प्रगति देखें" data-mr="माझी प्रगती पहा">See My Progress</span> <i class="fa-solid fa-arrow-right"></i></button>
+               <button class="app-button-back" onclick="showScreen('fagerstromTest')"><i class="fa-solid fa-arrow-left"></i> <span data-en="Back" data-hi="पीछे" data-mr="मागे">Back</span></button>
+               <button class="app-button-primary" onclick="showScreen('dangerTimesCravingsScreen')"><span data-en="Next" data-hi="अगला" data-mr="पुढे">Next</span> <i class="fa-solid fa-arrow-right"></i></button>
            </div>
+       </div>
+
+       <div id="dangerTimesCravingsScreen" class="card-container">
+            <div id="dangerTimesCravingsTopStepper" class="stepper-container"></div>
+            <h2 class="section-header" data-en="Manage Danger Times & Cravings" data-hi="खतरनाक समय और लालसा का प्रबंधन करें" data-mr="धोक्याचे क्षण आणि लालसा व्यवस्थापित करा">Manage Danger Times & Cravings</h2>
+            <p class="section-subheader" data-en="Identify your 'Danger Times' when cravings are strongest. We'll help you distract yourself!" data-hi="अपने 'खतरनाक समय' की पहचान करें जब लालसा सबसे मजबूत होती है। हम आपको खुद को विचलित करने में मदद करेंगे!" data-mr="जेव्हा लालसा सर्वात तीव्र असते तेव्हा तुमचे 'धोक्याचे क्षण' ओळखा. आम्ही तुम्हाला स्वतःला विचलित करण्यात मदत करू!">Identify your 'Danger Times'...</p>
+            
+            <div class="form-section space-y-4 text-left">
+                <div>
+                    <label for="dangerTimeInput" class="block text-sm font-medium mb-1" data-en="Nominate a Danger Time" data-hi="एक खतरनाक समय नामांकित करें" data-mr="धोक्याचा एक वेळ नामांकित करा">Nominate a Danger Time</label>
+                    <input type="text" id="dangerTimeInput" class="input-field" placeholder="e.g., After morning coffee, During stress">
+                    <button class="app-button-secondary w-full mt-2" onclick="addDangerTime()">
+                        <i class="fa-solid fa-hourglass-half"></i> <span data-en="Add Danger Time" data-hi="खतरनाक समय जोड़ें" data-mr="धोक्याचा वेळ जोडा">Add Danger Time</span>
+                    </button>
+                </div>
+                <div id="dangerTimesList" class="scrollable-content-area mt-4">
+                    <p id="noDangerTimesAdded" class="text-gray-500" data-en="No danger times added yet." data-hi="अभी तक कोई खतरनाक समय नहीं जोड़ा गया है।" data-mr="अद्याप कोणताही धोकादायक वेळ जोडला नाही.">No danger times added yet.</p>
+                </div>
+
+                <div class="mt-6">
+                    <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2 mb-2" data-en="Distraction Ideas" data-hi="विचलित करने वाले विचार" data-mr="विचलित करण्याचे विचार">Distraction Ideas</h3>
+                    <p id="distractionIdea" class="bg-blue-50 text-blue-800 p-3 rounded-md border border-blue-200 text-sm italic" data-en="Stretch for a few minutes, focusing on the sensations in your body." data-hi="कुछ मिनटों के लिए स्ट्रेच करें, अपने शरीर में संवेदनाओं पर ध्यान केंद्रित करें।" data-mr="काही मिनिटांसाठी स्ट्रेच करा, तुमच्या शरीरातील संवेदनांवर लक्ष केंद्रित करा.">Stretch for a few minutes, focusing on the sensations in your body.</p>
+                    <button class="app-button-secondary w-full mt-2" onclick="getDistractionIdea()">
+                        <i class="fa-solid fa-lightbulb"></i> <span data-en="Get Another Idea" data-hi="दूसरा विचार प्राप्त करें" data-mr="दुसरी कल्पना मिळवा">Get Another Idea</span>
+                    </button>
+                </div>
+
+                <div class="mt-6">
+                    <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2 mb-2" data-en="Reminder Service" data-hi="अनुस्मारक सेवा" data-mr="स्मरणपत्र सेवा">Reminder Service</h3>
+                    <p class="text-sm text-gray-600 mb-3" data-en="Opt-in for timely reminders to help you fight cravings and stay tobacco-free." data-hi="लालसा से लड़ने और तंबाकू-मुक्त रहने में आपकी मदद करने के लिए समय पर अनुस्मारक के लिए ऑप्ट-इन करें।" data-mr="लालसांशी लढण्यासाठी आणि तंबाखू-मुक्त राहण्यासाठी वेळेवर स्मरणपत्रे मिळवण्यासाठी ऑप्ट-इन करा.">Opt-in for timely reminders...</p>
+                    <div class="space-y-3">
+                        <label class="checkbox-option"><input type="checkbox" id="emailRemindersOptIn"> <span data-en="Email Reminders" data-hi="ईमेल अनुस्मारक" data-mr="ईमेल स्मरणपत्रे">Email Reminders</span></label>
+                        <input type="email" id="reminderEmail" class="input-field" placeholder="Your Email" style="display:none;">
+                        <label class="checkbox-option"><input type="checkbox" id="smsRemindersOptIn"> <span data-en="SMS Reminders" data-hi="एसएमएस अनुस्मारक" data-mr="एसएमएस स्मरणपत्रे">SMS Reminders</span></label>
+                        <input type="tel" id="reminderPhone" class="input-field" placeholder="Your Phone Number" style="display:none;">
+                        <button class="app-button-primary w-full" onclick="saveReminderPreferences()">
+                            <i class="fa-solid fa-save"></i> <span data-en="Save Preferences" data-hi="पसंद सहेजें" data-mr="पसंती जतन करा">Save Preferences</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="app-button-back" onclick="showScreen('healthOverviewScreen')"><i class="fa-solid fa-arrow-left"></i> <span data-en="Health Overview" data-hi="स्वास्थ्य अवलोकन" data-mr="आरोग्य अवलोकन">Health Overview</span></button>
+                <button class="app-button-primary" onclick="showScreen('dailyFocusScreen')"><span data-en="Next" data-hi="अगला" data-mr="पुढे">Next</span> <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+       </div>
+
+       <div id="dailyFocusScreen" class="card-container">
+            <div id="dailyFocusTopStepper" class="stepper-container"></div>
+            <h2 class="section-header" data-en="Daily Focus" data-hi="दैनिक ध्यान" data-mr="दैनिक लक्ष">Daily Focus</h2>
+            <p class="section-subheader" data-en="For today, here's a specific focus or challenge to help you on your journey to quit tobacco." data-hi="आज के लिए, तंबाकू छोड़ने की आपकी यात्रा में मदद करने के लिए यहाँ एक विशिष्ट ध्यान या चुनौती है।" data-mr="आजसाठी, तंबाखू सोडण्याच्या तुमच्या प्रवासात मदत करण्यासाठी येथे एक विशिष्ट लक्ष किंवा आव्हान आहे.">For today, here's a specific focus...</p>
+            
+            <div class="form-section space-y-4 text-left">
+                <div>
+                    <label for="cigarettesSmokedYesterday" class="block text-sm font-medium mb-1" data-en="How many cigarettes did you smoke yesterday?" data-hi="आपने कल कितनी सिगरेट पी थी?" data-mr="काल तुम्ही किती सिगारेट ओढल्या?">How many cigarettes did you smoke yesterday?</label>
+                    <input type="number" id="cigarettesSmokedYesterday" class="input-field" min="0" value="0">
+                </div>
+                <button class="app-button-primary w-full" onclick="generateDailyFocus()">
+                    <i class="fa-solid fa-calendar-day"></i> <span data-en="Generate Today's Focus" data-hi="आज का ध्यान उत्पन्न करें" data-mr="आजचे लक्ष तयार करा">Generate Today's Focus</span>
+                </button>
+                <div id="todayFocusDisplay" class="bg-teal-50 text-teal-800 p-4 rounded-md border border-teal-200 mt-4" style="display: none;">
+                    <strong data-en="Today's Focus:" data-hi="आज का ध्यान:" data-mr="आजचे लक्ष:">Today's Focus:</strong> <span id="currentDailyFocus"></span>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="app-button-back" onclick="showScreen('dangerTimesCravingsScreen')"><i class="fa-solid fa-arrow-left"></i> <span data-en="Cravings" data-hi="लालसा" data-mr="लालसा">Cravings</span></button>
+                <button class="app-button-primary" onclick="showScreen('supportResourcesScreen')"><span data-en="Next" data-hi="अगला" data-mr="पुढे">Next</span> <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+       </div>
+
+       <div id="supportResourcesScreen" class="card-container">
+            <div id="supportResourcesTopStepper" class="stepper-container"></div>
+            <h2 class="section-header" data-en="Support Resources" data-hi="समर्थन संसाधन" data-mr="समर्थन संसाधने">Support Resources</h2>
+            <p class="section-subheader" data-en="Here are personalized recommendations and resources to support you on your path to a tobacco-free life." data-hi="तंबाकू-मुक्त जीवन के लिए आपके मार्ग पर आपको समर्थन देने के लिए यहाँ व्यक्तिगत सिफारिशें और संसाधन हैं।" data-mr="तंबाखू-मुक्त जीवनासाठी तुमच्या मार्गावर तुम्हाला समर्थन देण्यासाठी येथे वैयक्तिक शिफारसी आणि संसाधने आहेत.">Here are personalized recommendations...</p>
+            
+            <div class="form-section space-y-6 text-left">
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2 mb-2"><i class="fa-solid fa-pills text-teal-600"></i> <span data-en="NRT Recommendations:" data-hi="एनआरटी सिफारिशें:" data-mr="एनआरटी शिफारसी:">NRT Recommendations:</span></h3>
+                    <p id="nrtRecommendations" class="text-sm text-gray-700"></p>
+                    <a href="#" class="text-sm text-teal-600 hover:underline mt-2 inline-block" data-en="View Full NRT Guidelines" data-hi="पूर्ण एनआरटी दिशानिर्देश देखें" data-mr="पूर्ण एनआरटी मार्गदर्शक तत्त्वे पहा">View Full NRT Guidelines</a>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2 mb-2"><i class="fa-solid fa-person-walking text-teal-600"></i> <span data-en="Physical Well-being Exercises:" data-hi="शारीरिक कल्याण व्यायाम:" data-mr="शारीरिक आरोग्य व्यायाम:">Physical Well-being Exercises:</span></h3>
+                    <p id="physicalWellbeing" class="text-sm text-gray-700"></p>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2 mb-2"><i class="fa-solid fa-brain text-teal-600"></i> <span data-en="Mental Clarity Techniques:" data-hi="मानसिक स्पष्टता तकनीकें:" data-mr="मानसिक स्पष्टता तंत्र:">Mental Clarity Techniques:</span></h3>
+                    <p id="mentalClarity" class="text-sm text-gray-700"></p>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="app-button-back" onclick="showScreen('dailyFocusScreen')"><i class="fa-solid fa-arrow-left"></i> <span data-en="Daily Focus" data-hi="दैनिक ध्यान" data-mr="दैनिक लक्ष">Daily Focus</span></button>
+                <button class="app-button-primary" onclick="showScreen('progressTracker')"><span data-en="Next" data-hi="अगला" data-mr="पुढे">Next</span> <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
        </div>
        
         <div id="progressTracker" class="card-container">
             <div id="progressTrackerTopStepper" class="stepper-container"></div>
             <h2 class="section-header" data-en="Your Progress Tracker" data-hi="आपकी प्रगति ट्रैकर" data-mr="तुमचा प्रगती ट्रॅकर">Your Progress Tracker</h2>
-            <p class="section-subheader" data-en="Celebrate your achievements! Every moment counts." data-hi="अपनी उपलब्धियों का जश्न मनाएं! हर पल मायने रखता है।" data-mr="तुमचे यश साजरे करा! प्रत्येक क्षण महत्त्वाचा आहे.">Celebrate your achievements!</p>
+            <p class="section-subheader" data-en="Track your progress and celebrate your achievements! Your journey log records milestones towards a smoke-free life." data-hi="अपनी प्रगति को ट्रैक करें और अपनी उपलब्धियों का जश्न मनाएं! आपकी यात्रा लॉग धूम्रपान-मुक्त जीवन की ओर मील के पत्थर रिकॉर्ड करती है।" data-mr="तुमची प्रगती ट्रॅक करा आणि तुमची यश साजरी करा! तुमचा प्रवास लॉग धूम्रपान-मुक्त जीवनाकडे मैलाचे दगड नोंदवतो.">Track your progress and celebrate your achievements!</p>
             
-            <div class="grid grid-cols-2 gap-4 text-center mb-6 w-full max-w-md">
-                <div class="bg-gray-100 p-4 rounded-lg"><div class="text-2xl font-bold text-teal-600" id="daysFree">0</div><div class="text-sm text-gray-500" data-en="Days Smoke-Free" data-hi="धूम्रपान-मुक्त दिन" data-mr="धूम्रपान-मुक्त दिवस">Days Free</div></div>
-                <div class="bg-gray-100 p-4 rounded-lg"><div class="text-2xl font-bold text-teal-600" id="moneySaved">₹0</div><div class="text-sm text-gray-500" data-en="Money Saved" data-hi="बचाया गया पैसा" data-mr="पैसे वाचवले">Money Saved</div></div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mb-6 w-full max-w-lg">
+                <div class="bg-gray-100 p-3 rounded-lg"><div class="text-xl font-bold text-teal-600" id="daysFree">0</div><div class="text-xs text-gray-500" data-en="Days Smoke-Free" data-hi="धूम्रपान-मुक्त दिन" data-mr="धूम्रपान-मुक्त दिवस">Days Free</div></div>
+                <div class="bg-gray-100 p-3 rounded-lg"><div class="text-xl font-bold text-teal-600" id="hoursFree">0</div><div class="text-xs text-gray-500" data-en="Hours Smoke-Free" data-hi="धूम्रपान-मुक्त घंटे" data-mr="धूम्रपान-मुक्त तास">Hours Free</div></div>
+                <div class="bg-gray-100 p-3 rounded-lg"><div class="text-xl font-bold text-teal-600" id="minutesFree">0</div><div class="text-xs text-gray-500" data-en="Minutes Smoke-Free" data-hi="धूम्रपान-मुक्त मिनट" data-mr="धूम्रपान-मुक्त मिनिटे">Minutes Free</div></div>
+                <div class="bg-gray-100 p-3 rounded-lg"><div class="text-xl font-bold text-teal-600" id="moneySaved">₹0</div><div class="text-xs text-gray-500" data-en="Money Saved" data-hi="बचाया गया पैसा" data-mr="पैसे वाचवले">Money Saved</div></div>
             </div>
 
-            <div id="journeyLog" class="w-full max-w-md space-y-3 max-h-64 scrollable-content-area p-3"></div>
+            <div id="journeyLog" class="w-full max-w-md space-y-3 max-h-64 scrollable-content-area p-3">
+                </div>
 
             <div class="button-group">
-               <button class="app-button-back" onclick="showScreen('healthOverviewScreen')"><i class="fa-solid fa-arrow-left"></i> <span data-en="Overview" data-hi="अवलोकन" data-mr="अवलोकन">Overview</span></button>
-               <button class="app-button-primary" onclick="showScreen('welcomeScreen')"><i class="fa-solid fa-house"></i> <span data-en="Back to Home" data-hi="होम पर वापस" data-mr="घरी परत जा">Back to Home</span></button>
+               <button class="app-button-back" onclick="showScreen('supportResourcesScreen')"><i class="fa-solid fa-arrow-left"></i> <span data-en="Resources" data-hi="संसाधन" data-mr="संसाधने">Resources</span></button>
+               <button class="app-button-primary" onclick="showScreen('communityHubScreen')"><span data-en="Community" data-hi="समुदाय" data-mr="समुदाय">Community</span> <i class="fa-solid fa-arrow-right"></i></button>
            </div>
+       </div>
+
+       <div id="communityHubScreen" class="card-container">
+            <div id="communityHubTopStepper" class="stepper-container"></div>
+            <h2 class="section-header" data-en="Community Hub" data-hi="समुदाय केंद्र" data-mr="समुदाय केंद्र">Community Hub</h2>
+            <p class="section-subheader" data-en="Connect with others on their quitting journey. Share your story, get support, and find encouragement." data-hi="अपनी छोड़ने की यात्रा में दूसरों से जुड़ें। अपनी कहानी साझा करें, समर्थन प्राप्त करें, और प्रोत्साहन प्राप्त करें।" data-mr="तुमच्या सोडण्याच्या प्रवासात इतरांशी कनेक्ट व्हा. तुमची कथा सामायिक करा, समर्थन मिळवा आणि प्रोत्साहन मिळवा.">Connect with others...</p>
+            
+            <div class="form-section space-y-4 text-left">
+                <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2 mb-2" data-en="Testimonials" data-hi="प्रशंसापत्र" data-mr="प्रशंसापत्रे"><i class="fa-solid fa-quote-left text-teal-600"></i> Testimonials</h3>
+                <div class="testimonial-card">
+                    <p class="text-sm italic text-gray-700">"Uday Kiran helped me quit after 15 years. The daily focus and craving distractions were lifesavers!"</p>
+                    <p class="text-right text-sm font-medium text-gray-600 mt-2">- Anil K.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="text-sm italic text-gray-700">"The progress tracker kept me motivated. Seeing the money saved was a huge incentive!"</p>
+                    <p class="text-right text-sm font-medium text-gray-600 mt-2">- Priya S.</p>
+                </div>
+                <button class="app-button-secondary w-full" onclick="alert('Share Your Story feature coming soon!')">
+                    <i class="fa-solid fa-share-nodes"></i> <span data-en="Share Your Story" data-hi="अपनी कहानी साझा करें" data-mr="तुमची कथा सामायिक करा">Share Your Story</span>
+                </button>
+
+                <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2 mt-6 mb-2" data-en="Anonymous Group Sessions" data-hi="अनाम समूह सत्र" data-mr="अनामिक गट सत्र">Anonymous Group Sessions</h3>
+                <p class="text-sm text-gray-600 mb-3" data-en="Join live, anonymous group sessions for support and shared experiences." data-hi="समर्थन और साझा अनुभवों के लिए लाइव, अनाम समूह सत्रों में शामिल हों।" data-mr="समर्थन आणि सामायिक अनुभवांसाठी थेट, अनामिक गट सत्रांमध्ये सामील व्हा.">Join live, anonymous group sessions...</p>
+                <button class="app-button-primary w-full" onclick="alert('Anonymous Group Sessions feature coming soon!')">
+                    <i class="fa-solid fa-users"></i> <span data-en="Join a Session" data-hi="एक सत्र में शामिल हों" data-mr="एक सत्रात सामील व्हा">Join a Session</span>
+                </button>
+            </div>
+
+            <div class="button-group">
+                <button class="app-button-back" onclick="showScreen('progressTracker')"><i class="fa-solid fa-arrow-left"></i> <span data-en="Progress Tracker" data-hi="प्रगति ट्रैकर" data-mr="प्रगती ट्रॅकर">Progress Tracker</span></button>
+                <button class="app-button-primary" onclick="showScreen('resourceCenterScreen')"><span data-en="Next" data-hi="अगला" data-mr="पुढे">Next</span> <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+       </div>
+
+       <div id="resourceCenterScreen" class="card-container">
+            <div id="resourceCenterTopStepper" class="stepper-container"></div>
+            <h2 class="section-header" data-en="Resource Center" data-hi="संसाधन केंद्र" data-mr="संसाधन केंद्र">Resource Center</h2>
+            <p class="section-subheader" data-en="Access valuable information and tools to further empower your journey. Explore these resources at your convenience." data-hi="अपनी यात्रा को और सशक्त बनाने के लिए मूल्यवान जानकारी और उपकरणों तक पहुंचें। अपनी सुविधा के अनुसार इन संसाधनों का अन्वेषण करें।" data-mr="तुमच्या प्रवासाला अधिक सक्षम करण्यासाठी मौल्यवान माहिती आणि साधनांमध्ये प्रवेश करा. तुमच्या सोयीनुसार हे संसाधने एक्सप्लोर करा.">Access valuable information and tools...</p>
+            
+            <div class="form-section space-y-4 text-left">
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2 mb-2"><i class="fa-solid fa-book-open text-teal-600"></i> <span data-en="Educational Articles" data-hi="शैक्षिक लेख" data-mr="शैक्षणिक लेख">Educational Articles</span></h3>
+                    <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                        <li data-en="Understanding Nicotine Withdrawal" data-hi="निकोटिन वापसी को समझना" data-mr="निकोटिनची माघार समजून घेणे">Understanding Nicotine Withdrawal</li>
+                        <li data-en="Benefits of Quitting Tobacco" data-hi="तंबाकू छोड़ने के लाभ" data-mr="तंबाखू सोडण्याचे फायदे">Benefits of Quitting Tobacco</li>
+                        <li data-en="Healthy Lifestyle Tips" data-hi="स्वस्थ जीवनशैली के टिप्स" data-mr="निरोगी जीवनशैलीच्या टिप्स">Healthy Lifestyle Tips</li>
+                    </ul>
+                    <button class="app-button-secondary text-sm mt-3" onclick="alert('View Articles feature coming soon!')">
+                        <i class="fa-solid fa-magnifying-glass"></i> <span data-en="Explore Articles" data-hi="लेख देखें" data-mr="लेख एक्सप्लोर करा">Explore Articles</span>
+                    </button>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2 mb-2"><i class="fa-solid fa-video text-teal-600"></i> <span data-en="Helpful Videos" data-hi="सहायक वीडियो" data-mr="उपयोगी व्हिडिओ">Helpful Videos</span></h3>
+                    <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                        <li data-en="Mindfulness for Cravings" data-hi="लालसा के लिए माइंडफुलनेस" data-mr="लालसासाठी माइंडफुलनेस">Mindfulness for Cravings</li>
+                        <li data-en="Exercise for Better Health" data-hi="बेहतर स्वास्थ्य के लिए व्यायाम" data-mr="चांगल्या आरोग्यासाठी व्यायाम">Exercise for Better Health</li>
+                    </ul>
+                    <button class="app-button-secondary text-sm mt-3" onclick="alert('View Videos feature coming soon!')">
+                        <i class="fa-solid fa-play"></i> <span data-en="Watch Videos" data-hi="वीडियो देखें" data-mr="व्हिडिओ पहा">Watch Videos</span>
+                    </button>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2 mb-2"><i class="fa-solid fa-phone-volume text-teal-600"></i> <span data-en="Helpline & Counseling" data-hi="हेल्पलाइन और परामर्श" data-mr="हेल्पलाइन आणि समुपदेशन">Helpline & Counseling</span></h3>
+                    <p class="text-sm text-gray-700" data-en="Connect with professionals for one-on-one support." data-hi="व्यक्तिगत समर्थन के लिए पेशेवरों से जुड़ें।" data-mr="एक-एक समर्थनासाठी व्यावसायिकांशी संपर्क साधा.">Connect with professionals for one-on-one support.</p>
+                    <button class="app-button-secondary text-sm mt-3" onclick="alert('Contact Helpline feature coming soon!')">
+                        <i class="fa-solid fa-phone"></i> <span data-en="Call Helpline" data-hi="हेल्पलाइन पर कॉल करें" data-mr="हेल्पलाइनवर कॉल करा">Call Helpline</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="button-group justify-center">
+                <button class="app-button-primary" onclick="showScreen('welcomeScreen')"><i class="fa-solid fa-house"></i> <span data-en="Return to Home" data-hi="होम पर वापस" data-mr="घरी परत जा">Return to Home</span></button>
+            </div>
        </div>
 
     </div>
 
     <script>
         // --- COMPLETE SCRIPT ---
-        let currentUser = {};
+        let currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
         let currentFagerstromQuestion = 0;
-        let fagerstromAnswers = Array(6).fill(null);
+        let fagerstromAnswers = JSON.parse(localStorage.getItem('fagerstromAnswers')) || Array(6).fill(null);
         let fagerstromScore = 0;
         let nicotineDependenceLevel = '';
-        let quitDate = null;
-        
+        let quitDate = currentUser.quitDate ? new Date(currentUser.quitDate) : null;
+
+        let supporters = JSON.parse(localStorage.getItem('supporters')) || [];
+        let dangerTimes = JSON.parse(localStorage.getItem('dangerTimes')) || [];
+        let reminderPreferences = JSON.parse(localStorage.getItem('reminderPreferences')) || { email: '', phone: '', emailOptIn: false, smsOptIn: false };
+        let dailyLog = JSON.parse(localStorage.getItem('dailyLog')) || []; // {date: 'YYYY-MM-DD', smoked: 9, focus: 'Today's focus...'}
+
         const languages = ['en', 'hi', 'mr'];
         let currentLanguageIndex = 0;
         let currentLanguage = languages[currentLanguageIndex];
 
-        const fagerstromQuestions = [ { heading: { en: "First Cigarette of the Day", hi: "दिन की पहली सिगरेट", mr: "दिवसाची पहिली सिगारेट" }, intro: { en: "How soon after waking do you feel the urge for your first cigarette?", hi: "जागने के कितनी देर बाद आपको अपनी पहली सिगरेट की इच्छा महसूस होती है?", mr: "झोपेतून उठल्यानंतर किती वेळाने तुम्हाला पहिली सिगारेट ओढण्याची इच्छा होते?" }, options: [ { text: { en: "Within 5 minutes", hi: "5 मिनट के भीतर", mr: "5 मिनिटांच्या आत" }, score: 3 }, { text: { en: "5-30 minutes", hi: "5-30 मिनट में", mr: "5-30 मिनिटांत" }, score: 2 }, { text: { en: "31-60 minutes", hi: "31-60 मिनट में", mr: "31-60 मिनिटांत" }, score: 1 }, { text: { en: "After 60 minutes", hi: "60 मिनट के बाद", mr: "60 मिनिटांनंतर" }, score: 0 } ] }, { heading: { en: "Smoking in Restricted Areas", hi: "प्रतिबंधित क्षेत्रों में धूम्रपान", mr: "प्रतिबंधित ठिकाणी धूम्रपान" }, intro: { en: "Do you find it difficult to refrain from smoking in places where it is forbidden?", hi: "क्या आपको उन जगहों पर धूम्रपान करने से बचना मुश्किल लगता है जहाँ यह मना है?", mr: "ज्या ठिकाणी धूम्रपान करण्यास मनाई आहे तेथे धूम्रपान टाळणे तुम्हाला कठीण वाटते का?" }, options: [ { text: { en: "Yes", hi: "हाँ", mr: "होय" }, score: 1 }, { text: { en: "No", hi: "नहीं", mr: "नाही" }, score: 0 } ] }, { heading: { en: "Most Important Cigarette", hi: "सबसे महत्वपूर्ण सिगरेट", mr: "सर्वात महत्त्वाची सिगारेट" }, intro: { en: "Which cigarette would you hate to give up most?", hi: "आप कौन सी सिगरेट छोड़ना सबसे ज़्यादा नापसंद करेंगे?", mr: "कोणती सिगारेट सोडण्याचा तुम्हाला सर्वात जास्त तिरस्कार वाटेल?" }, options: [ { text: { en: "The first one in the morning", hi: "सुबह की पहली सिगरेट", mr: "सकाळची पहिली" }, score: 1 }, { text: { en: "Any other", hi: "कोई और", mr: "इतर कोणतीही" }, score: 0 } ] }, { heading: { en: "Daily Cigarette Consumption", hi: "दैनिक सिगरेट की खपत", mr: "दैनंदिन सिगारेटचा वापर" }, intro: { en: "How many cigarettes a day do you smoke?", hi: "आप एक दिन में कितनी सिगरेट पीते हैं?", mr: "तुम्ही दिवसाला किती सिगारेट ओढता?" }, options: [ { text: { en: "10 or less", hi: "10 या उससे कम", mr: "10 किंवा कमी" }, score: 0 }, { text: { en: "11-20", hi: "11-20", mr: "11-20" }, score: 1 }, { text: { en: "21-30", hi: "21-30", mr: "21-30" }, score: 2 }, { text: { en: "31 or more", hi: "31 या ज़्यादा", mr: "31 किंवा जास्त" }, score: 3 } ] }, { heading: { en: "Morning Smoking Frequency", hi: "सुबह धूम्रपान की आवृत्ति", mr: "सकाळी धूम्रपानाची वारंवारता" }, intro: { en: "Do you smoke more frequently during the first hours after waking than during the rest of the day?", hi: "क्या आप जागने के बाद पहले घंटों में दिन के बाकी हिस्सों की तुलना में अधिक बार धूम्रपान करते हैं?", mr: "तुम्ही उठल्यानंतर पहिल्या काही तासांत दिवसाच्या इतर वेळेपेक्षा जास्त धूम्रपान करता का?" }, options: [ { text: { en: "Yes", hi: "हाँ", mr: "होय" }, score: 1 }, { text: { en: "No", hi: "नहीं", mr: "नाही" }, score: 0 } ] }, { heading: { en: "Smoking When Ill", hi: "बीमार होने पर धूम्रपान", mr: "आजारी असताना धूम्रपान" }, intro: { en: "Do you smoke even if you are so ill that you are in bed most of the day?", hi: "आप तब भी धूम्रपान करते हैं जब आप इतने बीमार हों कि आप दिन के अधिकांश समय बिस्तर पर हों?", mr: "तुम्ही इतके आजारी असाल की दिवसातील बहुतेक वेळ अंथरुणावर असता, तरीही तुम्ही धूम्रपान करता का?" }, options: [ { text: { en: "Yes", hi: "हाँ", mr: "होय" }, score: 1 }, { text: { en: "No", hi: "नहीं", mr: "नाही" }, score: 0 } ] } ];
-        
-        const screens = ['welcomeScreen', 'congratulationsScreen', 'quitDecisionScreen', 'fagerstromTest', 'healthOverviewScreen', 'progressTracker'];
+        // Ensure currentLanguage is loaded from localStorage or default
+        if (localStorage.getItem('currentLanguage')) {
+            currentLanguage = localStorage.getItem('currentLanguage');
+            currentLanguageIndex = languages.indexOf(currentLanguage);
+            if (currentLanguageIndex === -1) { // Fallback if invalid language in storage
+                currentLanguageIndex = 0;
+                currentLanguage = languages[0];
+                localStorage.setItem('currentLanguage', currentLanguage);
+            }
+        }
+
+
+        const fagerstromQuestions = [
+            { heading: { en: "First Cigarette of the Day", hi: "दिन की पहली सिगरेट", mr: "दिवसाची पहिली सिगारेट" }, intro: { en: "How soon after waking do you feel the urge for your first cigarette?", hi: "जागने के कितनी देर बाद आपको अपनी पहली सिगरेट की इच्छा महसूस होती है?", mr: "झोपेतून उठल्यानंतर किती वेळाने तुम्हाला पहिली सिगारेट ओढण्याची इच्छा होते?" }, options: [ { text: { en: "Within 5 minutes", hi: "5 मिनट के भीतर", mr: "5 मिनिटांच्या आत" }, score: 3 }, { text: { en: "5-30 minutes", hi: "5-30 मिनट में", mr: "5-30 मिनिटांत" }, score: 2 }, { text: { en: "31-60 minutes", hi: "31-60 मिनट में", mr: "31-60 मिनिटांत" }, score: 1 }, { text: { en: "After 60 minutes", hi: "60 मिनट के बाद", mr: "60 मिनिटांनंतर" }, score: 0 } ] },
+            { heading: { en: "Smoking in Restricted Areas", hi: "प्रतिबंधित क्षेत्रों में धूम्रपान", mr: "प्रतिबंधित ठिकाणी धूम्रपान" }, intro: { en: "Do you find it difficult to refrain from smoking in places where it is forbidden?", hi: "क्या आपको उन जगहों पर धूम्रपान करने से बचना मुश्किल लगता है जहाँ यह मना है?", mr: "ज्या ठिकाणी धूम्रपान करण्यास मनाई आहे तेथे धूम्रपान टाळणे तुम्हाला कठीण वाटते का?" }, options: [ { text: { en: "Yes", hi: "हाँ", mr: "होय" }, score: 1 }, { text: { en: "No", hi: "नहीं", mr: "नाही" }, score: 0 } ] },
+            { heading: { en: "Most Important Cigarette", hi: "सबसे महत्वपूर्ण सिगरेट", mr: "सर्वात महत्त्वाची सिगारेट" }, intro: { en: "Which cigarette would you hate to give up most?", hi: "आप कौन सी सिगरेट छोड़ना सबसे ज़्यादा नापसंद करेंगे?", mr: "कोणती सिगारेट सोडण्याचा तुम्हाला सर्वात जास्त तिरस्कार वाटेल?" }, options: [ { text: { en: "The first one in the morning", hi: "सुबह की पहली सिगरेट", mr: "सकाळची पहिली" }, score: 1 }, { text: { en: "Any other", hi: "कोई और", mr: "इतर कोणतीही" }, score: 0 } ] },
+            { heading: { en: "Daily Cigarette Consumption", hi: "दैनिक सिगरेट की खपत", mr: "दैनंदिन सिगारेटचा वापर" }, intro: { en: "How many cigarettes a day do you smoke?", hi: "आप एक दिन में कितनी सिगरेट पीते हैं?", mr: "तुम्ही दिवसाला किती सिगारेट ओढता?" }, options: [ { text: { en: "10 or less", hi: "10 या उससे कम", mr: "10 किंवा कमी" }, score: 0 }, { text: { en: "11-20", hi: "11-20", mr: "11-20" }, score: 1 }, { text: { en: "21-30", hi: "21-30", mr: "21-30" }, score: 2 }, { text: { en: "31 or more", hi: "31 या ज़्यादा", mr: "31 किंवा जास्त" }, score: 3 } ] },
+            { heading: { en: "Morning Smoking Frequency", hi: "सुबह धूम्रपान की आवृत्ति", mr: "सकाळी धूम्रपानाची वारंवारता" }, intro: { en: "Do you smoke more frequently during the first hours after waking than during the rest of the day?", hi: "क्या आप जागने के बाद पहले घंटों में दिन के बाकी हिस्सों की तुलना में अधिक बार धूम्रपान करते हैं?", mr: "तुम्ही उठल्यानंतर पहिल्या काही तासांत दिवसाच्या इतर वेळेपेक्षा जास्त धूम्रपान करता का?" }, options: [ { text: { en: "Yes", hi: "हाँ", mr: "होय" }, score: 1 }, { text: { en: "No", hi: "नहीं", mr: "नाही" }, score: 0 } ] },
+            { heading: { en: "Smoking When Ill", hi: "बीमार होने पर धूम्रपान", mr: "आजारी असताना धूम्रपान" }, intro: { en: "Do you smoke even if you are so ill that you are in bed most of the day?", hi: "आप तब भी धूम्रपान करते हैं जब आप इतने बीमार हों कि आप दिन के अधिकांश समय बिस्तर पर हों?", mr: "तुम्ही इतके आजारी असाल की दिवसातील बहुतेक वेळ अंथरुणावर असता, तरीही तुम्ही धूम्रपान करता का?" }, options: [ { text: { en: "Yes", hi: "हाँ", mr: "होय" }, score: 1 }, { text: { en: "No", hi: "नहीं", mr: "नाही" }, score: 0 } ] }
+        ];
+
+        const screens = [
+            'welcomeScreen', 'congratulationsScreen', 'quitDecisionScreen', 'goalsMotivationsScreen',
+            'supportSystemScreen', 'fagerstromTest', 'healthOverviewScreen',
+            'dangerTimesCravingsScreen', 'dailyFocusScreen', 'supportResourcesScreen',
+            'progressTracker', 'communityHubScreen', 'resourceCenterScreen'
+        ];
         
         const translations = {
             highDependenceAdvice: { en: "Your dependence has a <strong>significant impact</strong>. Focusing on cessation is crucial for improving lung, cardiovascular, and mental health. Let's build a plan.", hi: "आपकी निर्भरता का <strong>महत्वपूर्ण प्रभाव</strong> है। फेफड़ों, हृदय और मानसिक स्वास्थ्य में सुधार के लिए समाप्ति पर ध्यान केंद्रित करना महत्वपूर्ण है। आइए एक योजना बनाएं।", mr: "तुमची निर्भरता <strong>लक्षणीय परिणाम</strong> करते. फुफ्फुस, हृदय व रक्तवाहिन्यासंबंधी आणि मानसिक आरोग्य सुधारण्यासाठी धूम्रपान सोडण्यावर लक्ष केंद्रित करणे महत्त्वाचे आहे. चला एक योजना तयार करूया." },
             moderateDependenceAdvice: { en: "Your tobacco use has a <strong>moderate impact</strong>. This is a critical time to implement effective strategies to prevent further damage. Consistent effort will bring great results.", hi: "आपके तंबाकू के उपयोग का <strong>मध्यम प्रभाव</strong> है। आगे की क्षति को रोकने के लिए प्रभावी रणनीतियों को लागू करने का यह एक महत्वपूर्ण समय है। लगातार प्रयास से अच्छे परिणाम मिलेंगे।", mr: "तुमच्या तंबाखूच्या वापराचा <strong>मध्यम परिणाम</strong> होतो. पुढील नुकसान टाळण्यासाठी प्रभावी रणनीती लागू करण्याची ही एक महत्त्वाची वेळ आहे. सातत्यपूर्ण प्रयत्नांना चांगले परिणाम मिळतील." },
             lowDependenceAdvice: { en: "Your dependence is <strong>low</strong>, a great advantage! This gives you a strong foundation. Focus on reinforcing healthy habits to stay smoke-free.", hi: "आपकी निर्भरता <strong>कम</strong> है, यह एक बड़ा फायदा है! यह आपको एक मजबूत आधार देता है। धूम्रपान मुक्त रहने के लिए स्वस्थ आदतों को मजबूत करने पर ध्यान दें।", mr: "तुमची निर्भरता <strong>कमी</strong> आहे, हा एक मोठा फायदा आहे! हे तुम्हाला एक मजबूत पाया देते. धूम्रपानमुक्त राहण्यासाठी निरोगी सवयी मजबूत करण्यावर लक्ष केंद्रित करा." },
             overallImpact: { en: "Overall Impact", hi: "कुल प्रभाव", mr: "एकूण परिणाम"},
-            fagerstromScoreLabel: { en: "Score", hi: "स्कोर", mr: "गुण" }
+            fagerstromScoreLabel: { en: "Score", hi: "स्कोर", mr: "गुण" },
+            noSupportersAdded: { en: "No supporters added yet.", hi: "अभी तक कोई समर्थक नहीं जोड़ा गया है।", mr: "अद्याप कोणताही समर्थक जोडला नाही."},
+            noDangerTimesAdded: { en: "No danger times added yet.", hi: "अभी तक कोई खतरनाक समय नहीं जोड़ा गया है।", mr: "अद्याप कोणताही धोकादायक वेळ जोडला नाही."},
+            setQuitDateToTrack: { en: "Set a quit date to track your progress!", hi: "अपनी प्रगति को ट्रैक करने के लिए छोड़ने की तारीख निर्धारित करें!", mr: "तुमची प्रगती ट्रॅक करण्यासाठी सोडण्याची तारीख निश्चित करा!"},
+            todaysFocus: { en: "Today's Focus:", hi: "आज का ध्यान:", mr: "आजचे लक्ष:"},
+            nrtRecHigh: { en: "Given your high dependence, NRTs are highly recommended. Discuss with your doctor patches, gum, lozenges, or inhalers, and consider combination therapy for better results. See full guidelines for dosages.", hi: "आपकी उच्च निर्भरता को देखते हुए, एनआरटी अत्यधिक अनुशंसित हैं। अपने डॉक्टर से पैच, गम, लोजेंग्स या इनहेलर पर चर्चा करें, और बेहतर परिणामों के लिए संयोजन चिकित्सा पर विचार करें। खुराक के लिए पूर्ण दिशानिर्देश देखें।", mr: "तुमच्या उच्च निर्भरतेमुळे, एनआरटी अत्यंत शिफारस केलेले आहेत. तुमच्या डॉक्टरांशी पॅच, गम, लॉझेंजेस किंवा इनहेलरबद्दल चर्चा करा आणि चांगल्या परिणामांसाठी संयोजन थेरपीचा विचार करा. डोससाठी पूर्ण मार्गदर्शक तत्त्वे पहा."},
+            nrtRecModerate: { en: "With moderate dependence, NRTs can significantly aid your quitting process. Options include patches, gum, or lozenges. Consult your doctor to find the best fit and dosage for you.", hi: "मध्यम निर्भरता के साथ, एनआरटी आपकी छोड़ने की प्रक्रिया में महत्वपूर्ण रूप से सहायता कर सकते हैं। विकल्पों में पैच, गम या लोजेंग्स शामिल हैं। अपने लिए सबसे उपयुक्त और खुराक खोजने के लिए अपने डॉक्टर से सलाह लें।", mr: "मध्यम निर्भरतेसह, एनआरटी तुमच्या सोडण्याच्या प्रक्रियेस लक्षणीय मदत करू शकतात. पर्यायांमध्ये पॅच, गम किंवा लॉझेंजेस यांचा समावेश आहे. तुमच्यासाठी सर्वोत्तम निवड आणि डोस शोधण्यासाठी तुमच्या डॉक्टरांचा सल्ला घ्या."},
+            nrtRecLow: { en: "For low dependence, NRTs are an option, but you might find behavioral strategies equally effective. If cravings are strong, consider lozenges or gum. Always consult a healthcare professional.", hi: "कम निर्भरता के लिए, एनआरटी एक विकल्प है, लेकिन आपको व्यवहारिक रणनीतियाँ भी उतनी ही प्रभावी लग सकती हैं। यदि लालसा मजबूत है, तो लोजेंग्स या गम पर विचार करें। हमेशा एक स्वास्थ्य पेशेवर से सलाह लें।", mr: "कमी निर्भरतेसाठी, एनआरटी एक पर्याय आहे, परंतु तुम्हाला वर्तणूक रणनीती तितक्याच प्रभावी वाटू शकतात. जर लालसा तीव्र असेल, तर लॉझेंजेस किंवा गमचा विचार करा. नेहमी आरोग्य व्यावसायिकाचा सल्ला घ्या."},
+            physicalRecHigh: { en: "Engage in light physical activity such as walking for 30 minutes daily. Deep breathing exercises (diaphragmatic breathing) can significantly improve lung capacity and reduce stress. Consider yoga or stretching for flexibility.", hi: "प्रतिदिन 30 मिनट तक हल्की शारीरिक गतिविधि जैसे चलना शामिल करें। गहरी साँस लेने के व्यायाम (डायाफ्रामिक श्वास) फेफड़ों की क्षमता में काफी सुधार कर सकते हैं और तनाव को कम कर सकते हैं। लचीलेपन के लिए योग या स्ट्रेचिंग पर विचार करें।", mr: "रोज 30 मिनिटे चालणे यांसारखे हलके शारीरिक व्यायाम करा. दीर्घ श्वास घेण्याचे व्यायाम (डायाफ्रामिक श्वास) फुफ्फुसांची क्षमता लक्षणीयरीत्या सुधारू शकतात आणि ताण कमी करू शकतात. लवचिकतेसाठी योग किंवा स्ट्रेचिंगचा विचार करा."},
+            physicalRecModerate: { en: "Regular moderate exercise like brisk walking or cycling for 20-30 minutes, 3-4 times a week, can boost energy and mood. Incorporate light stretching to ease tension.", hi: "तेज चलना किंवा सायकलिंग यांसारखे नियमित मध्यम व्यायाम 20-30 मिनिटे, आठवड्यातून 3-4 वेळा ऊर्जा आणि मूड सुधारू शकतात. ताण कमी करण्यासाठी हलके स्ट्रेचिंग समाविष्ट करा.", mr: "जलद चालणे किंवा सायकलिंगसारखे नियमित मध्यम व्यायाम 20-30 मिनिटे, आठवड्यातून 3-4 वेळा ऊर्जा आणि मूड सुधारू शकतात. ताण कमी करण्यासाठी हलके स्ट्रेचिंग समाविष्ट करा."},
+            physicalRecLow: { en: "Maintaining an active lifestyle is key. Aim for at least 150 minutes of moderate-intensity activity per week. Find an activity you enjoy to make it sustainable.", hi: "सक्रिय जीवनशैली राखणे महत्त्वाचे आहे. दर आठवड्याला किमान 150 मिनिटे मध्यम-तीव्रतेची क्रिया करण्याचे ध्येय ठेवा. ते टिकाऊ बनवण्यासाठी तुम्हाला आवडणारी क्रिया शोधा.", mr: "सक्रिय जीवनशैली राखणे महत्त्वाचे आहे. दर आठवड्याला किमान 150 मिनिटे मध्यम-तीव्रतेची क्रिया करण्याचे ध्येय ठेवा. ते टिकाऊ बनवण्यासाठी तुम्हाला आवडणारी क्रिया शोधा."},
+            mentalRecHigh: { en: "Practice mindfulness meditation for 10-15 minutes daily to improve focus and reduce stress. Listen to calming music, engage in hobbies, or read to divert attention from cravings. Ensure adequate sleep for mental well-being.", hi: "ध्यान अभ्यास (माइंडफुलनेस मेडिटेशन) प्रतिदिन 10-15 मिनट करें ताकि ध्यान केंद्रित हो सके और तनाव कम हो सके। लालसा से ध्यान हटाने के लिए शांत संगीत सुनें, शौक में संलग्न हों, या पढ़ें। मानसिक स्वास्थ्य के लिए पर्याप्त नींद सुनिश्चित करें।", mr: "रोज 10-15 मिनिटे माइंडफुलनेस मेडिटेशनचा सराव करा ज्यामुळे लक्ष केंद्रित होईल आणि ताण कमी होईल. लालसांपासून लक्ष विचलित करण्यासाठी शांत संगीत ऐका, छंदात सहभागी व्हा किंवा वाचा. मानसिक आरोग्यासाठी पुरेशी झोप सुनिश्चित करा."},
+            mentalRecModerate: { en: "Incorporate short meditation breaks or guided imagery sessions into your day. Journaling your thoughts can also be beneficial. Spend time in nature to clear your mind.", hi: "तुमच्या दिवसात लहान ध्यान ब्रेक किंवा मार्गदर्शित कल्पना सत्रे समाविष्ट करा. तुमच्या विचारांचे जर्नलिंग करणे देखील फायदेशीर ठरू शकते. तुमचे मन साफ ​​करण्यासाठी निसर्गात वेळ घालवा.", mr: "तुमच्या दिवसात लहान ध्यान ब्रेक किंवा मार्गदर्शित कल्पना सत्रे समाविष्ट करा. तुमच्या विचारांचे जर्नलिंग करणे देखील फायदेशीर ठरू शकते. तुमचे मन साफ ​​करण्यासाठी निसर्गात वेळ घालवा."},
+            mentalRecLow: { en: "Maintain a routine that includes relaxation time. Consider learning a new skill or hobby to keep your mind engaged. Connect with supportive friends and family regularly.", hi: "आराम करण्याच्या वेळेचा समावेश असलेली एक दिनचर्या ठेवा. आपले मन व्यस्त ठेवण्यासाठी नवीन कौशल्ये किंवा छंद शिकण्याचा विचार करा. नियमितपणे सहाय्यक मित्र आणि कुटुंबाशी कनेक्ट व्हा.", mr: "आराम करण्याच्या वेळेचा समावेश असलेली एक दिनचर्या ठेवा. आपले मन व्यस्त ठेवण्यासाठी नवीन कौशल्ये किंवा छंद शिकण्याचा विचार करा. नियमितपणे सहाय्यक मित्र आणि कुटुंबाशी कनेक्ट व्हा."},
         };
 
-        function getTranslatedText(key, lang = currentLanguage) { return translations[key]?.[lang] || translations[key]?.['en'] || key; }
+        const distractionIdeas = [
+            { en: "Stretch for a few minutes, focusing on the sensations in your body.", hi: "कुछ मिनटों के लिए स्ट्रेच करें, अपने शरीर में संवेदनाओं पर ध्यान केंद्रित करें।", mr: "काही मिनिटांसाठी स्ट्रेच करा, तुमच्या शरीरातील संवेदनांवर लक्ष केंद्रित करा." },
+            { en: "Drink a glass of water slowly.", hi: "धीरे-धीरे एक गिलास पानी पीएं।", mr: "हळू हळू एक ग्लास पाणी प्या." },
+            { en: "Take 5 deep breaths, counting to 4 on the inhale and 6 on the exhale.", hi: "5 गहरी सांसें लें, साँस लेते समय 4 तक गिनें और साँस छोड़ते समय 6 तक गिनें।", mr: "श्वास घेताना 4 पर्यंत आणि श्वास सोडताना 6 पर्यंत मोजून 5 दीर्घ श्वास घ्या." },
+            { en: "Go for a short walk outside and notice your surroundings.", hi: "बाहर टहलने जाएं और अपने आस-पास देखें।", mr: "बाहेर फिरायला जा आणि तुमच्या आजूबाजूला काय आहे ते पहा." },
+            { en: "Call a friend or family member for a quick chat.", hi: "एक त्वरित चैट के लिए किसी दोस्त या परिवार के सदस्य को कॉल करें।", mr: "त्वरित गप्पांसाठी मित्र किंवा कुटुंबातील सदस्याला कॉल करा." },
+            { en: "Engage your hands with a simple task like doodling or fidgeting.", hi: "डूडलिंग या फिजेटिंग जैसे एक साधारण कार्य के साथ अपने हाथों को संलग्न करें।", mr: "डूडलिंग किंवा फिजेटिंगसारख्या सोप्या कामात आपले हात गुंतवा." },
+            { en: "Listen to a favorite song or a short podcast.", hi: "एक पसंदीदा गाना या एक छोटा पॉडकास्ट सुनें।", mr: "तुमचे आवडते गाणे किंवा छोटा पॉडकास्ट ऐका." },
+            { en: "Tidy up a small area in your home or workspace.", hi: "अपने घर या कार्यस्थल में एक छोटे से क्षेत्र को व्यवस्थित करें।", mr: "तुमच्या घरात किंवा कामाच्या ठिकाणी एक छोटासा भाग नीटनेटका करा." },
+            { en: "Distract yourself with a quick online game or puzzle.", hi: "एक त्वरित ऑनलाइन गेम या पहेली के साथ खुद को विचलित करें।", mr: "एका त्वरित ऑनलाइन गेम किंवा कोडेने स्वतःला विचलित करा." },
+            { en: "Visualize yourself as a smoke-free, healthier person.", hi: "अपने आप को धूम्रपान-मुक्त, स्वस्थ व्यक्ति के रूप में कल्पना करें।", mr: "स्वतःला धूम्रपान-मुक्त, निरोगी व्यक्ती म्हणून कल्पना करा." }
+        ];
+        let currentDistractionIndex = 0;
+
+
+        function getTranslatedText(key, lang = currentLanguage) {
+            return translations[key]?.[lang] || translations[key]?.['en'] || key;
+        }
 
         function translatePage(lang) {
             document.querySelectorAll('[data-en]').forEach(el => {
@@ -356,18 +663,34 @@
                         el.innerHTML = text;
                         el.appendChild(icon.cloneNode(true));
                     } else {
-                         el.innerHTML = text;
+                        el.innerHTML = text;
                     }
                 }
             });
-             const activeScreen = document.querySelector('.card-container.current-screen');
-             if(activeScreen?.id === 'fagerstromTest') { showFagerstromQuestion(currentFagerstromQuestion); }
-             if(activeScreen?.id === 'healthOverviewScreen') { generateHealthOverview(); }
+
+            // Update specific dynamic elements after general translation
+            const activeScreen = document.querySelector('.card-container.current-screen');
+            if(activeScreen?.id === 'fagerstromTest') { showFagerstromQuestion(currentFagerstromQuestion); }
+            if(activeScreen?.id === 'healthOverviewScreen') { generateHealthOverview(); }
+            if(activeScreen?.id === 'progressTracker') { updateProgressMetrics(); }
+            if(activeScreen?.id === 'supportSystemScreen') { renderSupporters(); }
+            if(activeScreen?.id === 'dangerTimesCravingsScreen') { renderDangerTimes(); updateDistractionIdea(false); }
+            if(activeScreen?.id === 'supportResourcesScreen') { populateSupportResources(); }
+            if(activeScreen?.id === 'dailyFocusScreen') {
+                const todayFocusDisplay = document.getElementById('todayFocusDisplay');
+                if (todayFocusDisplay.style.display !== 'none') {
+                    const currentFocus = dailyLog.find(log => log.date === new Date().toISOString().slice(0, 10));
+                    if (currentFocus) {
+                        document.getElementById('currentDailyFocus').innerHTML = currentFocus.focus[currentLanguage] || currentFocus.focus['en'];
+                    }
+                }
+            }
         }
 
         document.getElementById('languageToggle').addEventListener('click', () => {
             currentLanguageIndex = (currentLanguageIndex + 1) % languages.length;
             currentLanguage = languages[currentLanguageIndex];
+            localStorage.setItem('currentLanguage', currentLanguage); // Save language preference
             translatePage(currentLanguage);
         });
 
@@ -393,14 +716,32 @@
                     stepperPlaceholder.innerHTML = '';
                     stepperPlaceholder.appendChild(createStepper(screenId));
                 }
+                
+                // Specific screen initialization logic
+                if (screenId === 'fagerstromTest') { showFagerstromQuestion(currentFagerstromQuestion); }
                 if (screenId === 'healthOverviewScreen') { generateHealthOverview(); }
                 if (screenId === 'progressTracker') { updateProgressMetrics(); }
+                if (screenId === 'supportSystemScreen') { renderSupporters(); }
+                if (screenId === 'dangerTimesCravingsScreen') { renderDangerTimes(); updateDistractionIdea(true); loadReminderPreferences(); }
+                if (screenId === 'dailyFocusScreen') { document.getElementById('todayFocusDisplay').style.display = 'none'; }
+                if (screenId === 'supportResourcesScreen') { populateSupportResources(); }
+
+                translatePage(currentLanguage); // Ensure content of new screen is translated
             }
         }
         
         function processWelcomeAndShowNext() {
             currentUser.name = document.getElementById('userName').value.trim();
-            if (!currentUser.name) { alert('Please enter your name.'); return; }
+            currentUser.dob = document.getElementById('dob').value;
+            currentUser.gender = document.querySelector('input[name="gender"]:checked')?.value;
+            currentUser.mood = document.getElementById('mood').value;
+
+            if (!currentUser.name) { alert(currentLanguage === 'hi' ? 'कृपया अपना नाम दर्ज करें।' : currentLanguage === 'mr' ? 'कृपया तुमचे नाव प्रविष्ट करा.' : 'Please enter your name.'); return; }
+            if (!currentUser.dob) { alert(currentLanguage === 'hi' ? 'कृपया अपनी जन्मतिथि दर्ज करें।' : currentLanguage === 'mr' ? 'कृपया तुमची जन्मतारीख प्रविष्ट करा.' : 'Please enter your date of birth.'); return; }
+            if (!currentUser.gender) { alert(currentLanguage === 'hi' ? 'कृपया अपना लिंग चुनें।' : currentLanguage === 'mr' ? 'कृपया तुमचे लिंग निवडा.' : 'Please select your gender.'); return; }
+            
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
             const congratsTitle = document.getElementById('congratulationsScreenTitle');
             const name = currentUser.name;
             congratsTitle.setAttribute('data-en', `Congratulations, ${name}!`);
@@ -411,6 +752,7 @@
         }
 
         function proceedFromCongratulations() { showScreen('quitDecisionScreen'); }
+
         let quitPlan = '';
         function setQuitDecision(decision) {
             quitPlan = decision;
@@ -423,14 +765,62 @@
                 }
             }
         }
+
         function processQuitDecision() {
-            if (!quitPlan) { alert('Please select a plan.'); return; }
+            if (!quitPlan) { alert(currentLanguage === 'hi' ? 'कृपया एक योजना चुनें।' : currentLanguage === 'mr' ? 'कृपया एक योजना निवडा.' : 'Please select a plan.'); return; }
             if (quitPlan === 'now' || quitPlan === 'continue') {
                 const dateInput = document.getElementById('setQuitDate').value;
-                if (!dateInput) { alert('Please set a quit date.'); return; }
+                if (!dateInput) { alert(currentLanguage === 'hi' ? 'कृपया छोड़ने की तारीख निर्धारित करें।' : currentLanguage === 'mr' ? 'कृपया सोडण्याची तारीख निश्चित करा.' : 'Please set a quit date.'); return; }
                 currentUser.quitDate = dateInput;
                 quitDate = new Date(dateInput);
+                localStorage.setItem('currentUser', JSON.stringify(currentUser)); // Save quit date
             }
+            showScreen('goalsMotivationsScreen');
+        }
+
+        function processGoalsMotivations() {
+            currentUser.mainGoal = document.getElementById('mainGoal').value.trim();
+            currentUser.motivations = Array.from(document.querySelectorAll('input[name="motivation"]:checked')).map(cb => cb.value);
+            currentUser.otherMotivations = document.getElementById('otherMotivations').value.trim();
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            showScreen('supportSystemScreen');
+        }
+
+        function addSupporter() {
+            const name = document.getElementById('supporterName').value.trim();
+            const contact = document.getElementById('supporterContact').value.trim();
+            if (name) {
+                supporters.push({ name, contact });
+                localStorage.setItem('supporters', JSON.stringify(supporters));
+                renderSupporters();
+                document.getElementById('supporterName').value = '';
+                document.getElementById('supporterContact').value = '';
+            } else {
+                alert(currentLanguage === 'hi' ? 'कृपया समर्थक का नाम दर्ज करें।' : currentLanguage === 'mr' ? 'कृपया समर्थकाचे नाव प्रविष्ट करा.' : 'Please enter supporter\'s name.');
+            }
+        }
+
+        function renderSupporters() {
+            const list = document.getElementById('supportersList');
+            if (supporters.length === 0) {
+                list.innerHTML = `<p id="noSupportersAdded" class="text-gray-500">${getTranslatedText('noSupportersAdded')}</p>`;
+            } else {
+                list.innerHTML = supporters.map((s, index) => `
+                    <div class="bg-white p-3 rounded-md shadow-sm text-sm flex justify-between items-center mb-2">
+                        <span><strong>${s.name}</strong> ${s.contact ? `(${s.contact})` : ''}</span>
+                        <button onclick="removeSupporter(${index})" class="text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function removeSupporter(index) {
+            supporters.splice(index, 1);
+            localStorage.setItem('supporters', JSON.stringify(supporters));
+            renderSupporters();
+        }
+
+        function skipSupportSystem() {
             showScreen('fagerstromTest');
         }
 
@@ -440,20 +830,22 @@
             const container = document.getElementById('fagerstromQuestionContainer');
             container.innerHTML = `<h3 class="font-semibold text-lg mb-2">${q.heading[currentLanguage]}</h3><p class="text-gray-600 mb-4">${q.intro[currentLanguage]}</p><div class="space-y-3">${q.options.map((option, i) => `<label class="radio-option"><input type="radio" name="fagerstromQ" value="${i}" onchange="fagerstromAnswers[${index}] = parseInt(this.value)" ${fagerstromAnswers[index] === i ? 'checked' : ''}>${option.text[currentLanguage]}</label>`).join('')}</div>`;
             document.getElementById('fagerstromPrevBtn').style.display = index === 0 ? 'none' : 'inline-flex';
-            const nextBtn = document.getElementById('fagerstromNextBtn').querySelector('span');
+            const nextBtnSpan = document.getElementById('fagerstromNextBtn').querySelector('span');
             if(index === fagerstromQuestions.length - 1){
-                nextBtn.setAttribute('data-en', 'Finish Test');
-                nextBtn.setAttribute('data-hi', 'टेस्ट पूरा करें');
-                nextBtn.setAttribute('data-mr', 'चाचणी पूर्ण करा');
+                nextBtnSpan.setAttribute('data-en', 'Finish Test');
+                nextBtnSpan.setAttribute('data-hi', 'टेस्ट पूरा करें');
+                nextBtnSpan.setAttribute('data-mr', 'चाचणी पूर्ण करा');
             } else {
-                nextBtn.setAttribute('data-en', 'Next');
-                nextBtn.setAttribute('data-hi', 'अगला');
-                nextBtn.setAttribute('data-mr', 'पुढे');
+                nextBtnSpan.setAttribute('data-en', 'Next');
+                nextBtnSpan.setAttribute('data-hi', 'अगला');
+                nextBtnSpan.setAttribute('data-mr', 'पुढे');
             }
-            translatePage(currentLanguage);
+            translatePage(currentLanguage); // Re-translate question content
         }
+
         function nextFagerstromQuestion() {
-            if (fagerstromAnswers[currentFagerstromQuestion] === null) { alert('Please select an answer.'); return; }
+            if (fagerstromAnswers[currentFagerstromQuestion] === null) { alert(currentLanguage === 'hi' ? 'कृपया एक उत्तर चुनें।' : currentLanguage === 'mr' ? 'कृपया एक उत्तर निवडा.' : 'Please select an answer.'); return; }
+            localStorage.setItem('fagerstromAnswers', JSON.stringify(fagerstromAnswers)); // Save answers
             if (currentFagerstromQuestion < fagerstromQuestions.length - 1) {
                 showFagerstromQuestion(currentFagerstromQuestion + 1);
             } else {
@@ -461,6 +853,7 @@
                 showScreen('healthOverviewScreen');
             }
         }
+
         function prevFagerstromQuestion() { showFagerstromQuestion(currentFagerstromQuestion - 1); }
         
         function calculateFagerstromScore() {
@@ -468,6 +861,8 @@
             if (fagerstromScore <= 3) nicotineDependenceLevel = 'Low';
             else if (fagerstromScore <= 6) nicotineDependenceLevel = 'Moderate';
             else nicotineDependenceLevel = 'High';
+            currentUser.nicotineDependenceLevel = nicotineDependenceLevel; // Store dependence level
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
         }
         
         function generateHealthOverview() {
@@ -480,14 +875,17 @@
             const moderateImpact = { percentage: 60, label_en: 'Moderate', label_hi: 'मध्यम', label_mr: 'मध्यम', color: 'var(--warning-color)' };
             const lowImpact = { percentage: 30, label_en: 'Low', label_hi: 'कम', label_mr: 'कमी', color: 'var(--success-color)' };
 
-            if (nicotineDependenceLevel === 'High') { [advice, lungImpact, heartImpact, mindImpact] = [getTranslatedText('highDependenceAdvice'), highImpact, highImpact, moderateImpact]; }
-            else if (nicotineDependenceLevel === 'Moderate') { [advice, lungImpact, heartImpact, mindImpact] = [getTranslatedText('moderateDependenceAdvice'), moderateImpact, moderateImpact, lowImpact]; }
+            // Use the stored dependence level if available, otherwise calculate (though it should be calculated by now)
+            const currentDependence = currentUser.nicotineDependenceLevel || nicotineDependenceLevel;
+
+            if (currentDependence === 'High') { [advice, lungImpact, heartImpact, mindImpact] = [getTranslatedText('highDependenceAdvice'), highImpact, highImpact, moderateImpact]; }
+            else if (currentDependence === 'Moderate') { [advice, lungImpact, heartImpact, mindImpact] = [getTranslatedText('moderateDependenceAdvice'), moderateImpact, moderateImpact, lowImpact]; }
             else { [advice, lungImpact, heartImpact, mindImpact] = [getTranslatedText('lowDependenceAdvice'), lowImpact, lowImpact, { percentage: 15, label_en: 'Low', label_hi: 'कम', label_mr: 'कमी', color: 'var(--success-color)' }]; }
             
             dependenceText = lungImpact[`label_${currentLanguage}`] || lungImpact.label_en;
             healthScoreDisplay.innerHTML = `${getTranslatedText('overallImpact')}: <strong style="color: ${lungImpact.color}">${dependenceText}</strong> (${getTranslatedText('fagerstromScoreLabel')}: ${fagerstromScore})`;
             adviceText.innerHTML = advice;
-            
+
             const updateBar = (barId, impactData) => {
                 const barElement = document.getElementById(barId);
                 if (!barElement) return;
@@ -499,36 +897,257 @@
             };
             setTimeout(() => { updateBar('lungImpactBar', lungImpact); updateBar('heartImpactBar', heartImpact); updateBar('mindImpactBar', mindImpact); }, 100);
         }
-        
+
+        function addDangerTime() {
+            const time = document.getElementById('dangerTimeInput').value.trim();
+            if (time) {
+                dangerTimes.push(time);
+                localStorage.setItem('dangerTimes', JSON.stringify(dangerTimes));
+                renderDangerTimes();
+                document.getElementById('dangerTimeInput').value = '';
+            } else {
+                alert(currentLanguage === 'hi' ? 'कृपया एक खतरनाक समय दर्ज करें।' : currentLanguage === 'mr' ? 'कृपया धोक्याचा वेळ प्रविष्ट करा.' : 'Please enter a danger time.');
+            }
+        }
+
+        function renderDangerTimes() {
+            const list = document.getElementById('dangerTimesList');
+            if (dangerTimes.length === 0) {
+                list.innerHTML = `<p id="noDangerTimesAdded" class="text-gray-500">${getTranslatedText('noDangerTimesAdded')}</p>`;
+            } else {
+                list.innerHTML = dangerTimes.map((time, index) => `
+                    <div class="bg-white p-3 rounded-md shadow-sm text-sm flex justify-between items-center mb-2">
+                        <span>${time}</span>
+                        <button onclick="removeDangerTime(${index})" class="text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function removeDangerTime(index) {
+            dangerTimes.splice(index, 1);
+            localStorage.setItem('dangerTimes', JSON.stringify(dangerTimes));
+            renderDangerTimes();
+        }
+
+        function updateDistractionIdea(isNewScreenLoad) {
+            const distractionElement = document.getElementById('distractionIdea');
+            if (distractionIdeas.length > 0) {
+                if (isNewScreenLoad) {
+                    currentDistractionIndex = Math.floor(Math.random() * distractionIdeas.length);
+                } else {
+                    currentDistractionIndex = (currentDistractionIndex + 1) % distractionIdeas.length;
+                }
+                const idea = distractionIdeas[currentDistractionIndex];
+                distractionElement.textContent = idea[currentLanguage] || idea['en'];
+            }
+        }
+
+        function getDistractionIdea() {
+            updateDistractionIdea(false); // Get next idea, not random on new screen load
+        }
+
+        function loadReminderPreferences() {
+            document.getElementById('emailRemindersOptIn').checked = reminderPreferences.emailOptIn;
+            document.getElementById('reminderEmail').value = reminderPreferences.email;
+            document.getElementById('reminderEmail').style.display = reminderPreferences.emailOptIn ? 'block' : 'none';
+
+            document.getElementById('smsRemindersOptIn').checked = reminderPreferences.smsOptIn;
+            document.getElementById('reminderPhone').value = reminderPreferences.phone;
+            document.getElementById('reminderPhone').style.display = reminderPreferences.smsOptIn ? 'block' : 'none';
+
+            document.getElementById('emailRemindersOptIn').addEventListener('change', (e) => {
+                document.getElementById('reminderEmail').style.display = e.target.checked ? 'block' : 'none';
+            });
+            document.getElementById('smsRemindersOptIn').addEventListener('change', (e) => {
+                document.getElementById('reminderPhone').style.display = e.target.checked ? 'block' : 'none';
+            });
+        }
+
+        function saveReminderPreferences() {
+            reminderPreferences.emailOptIn = document.getElementById('emailRemindersOptIn').checked;
+            reminderPreferences.email = document.getElementById('reminderEmail').value.trim();
+            reminderPreferences.smsOptIn = document.getElementById('smsRemindersOptIn').checked;
+            reminderPreferences.phone = document.getElementById('reminderPhone').value.trim();
+
+            localStorage.setItem('reminderPreferences', JSON.stringify(reminderPreferences));
+            alert(currentLanguage === 'hi' ? 'अनुस्मारक पसंद सहेजे गए!' : currentLanguage === 'mr' ? 'स्मरणपत्र पसंती जतन केल्या!' : 'Reminder preferences saved!');
+        }
+
+        function generateDailyFocus() {
+            const cigarettesYesterday = parseInt(document.getElementById('cigarettesSmokedYesterday').value, 10);
+            if (isNaN(cigarettesYesterday)) {
+                alert(currentLanguage === 'hi' ? 'कृपया कल पी गई सिगरेट की संख्या दर्ज करें।' : currentLanguage === 'mr' ? 'कृपया काल ओढलेल्या सिगारेटची संख्या प्रविष्ट करा.' : 'Please enter the number of cigarettes smoked yesterday.');
+                return;
+            }
+
+            let focusText = {};
+            if (cigarettesYesterday === 0) {
+                focusText.en = "Fantastic! Keep up the smoke-free streak. Focus on celebrating small victories today.";
+                focusText.hi = "शानदार! धूम्रपान-मुक्त लकीर जारी रखें। आज छोटी जीतों का जश्न मनाने पर ध्यान दें।";
+                focusText.mr = "उत्कृष्ट! धूम्रपान-मुक्त राहण्याचा प्रयत्न सुरू ठेवा. आज छोट्या विजयांचा आनंद साजरा करण्यावर लक्ष केंद्रित करा.";
+            } else if (cigarettesYesterday <= 5) {
+                focusText.en = "Great progress! Today's focus: Aim for zero, and use a distraction technique when a craving hits.";
+                focusText.hi = "बहुत बढ़िया प्रगति! आज का ध्यान: शून्य का लक्ष्य रखें, और जब लालसा आए तो एक विचलित करने वाली तकनीक का उपयोग करें।";
+                focusText.mr = "उत्तम प्रगती! आजचे लक्ष: शून्याचे लक्ष्य ठेवा, आणि जेव्हा लालसा येते तेव्हा विचलित करण्याची तंत्रज्ञान वापरा.";
+            } else if (cigarettesYesterday <= 10) {
+                focusText.en = `Good effort! Today's focus: Target reducing your cigarette count to ${cigarettesYesterday - 2} or less. Implement a distraction technique when a craving hits.`;
+                focusText.hi = `अच्छा प्रयास! आज का ध्यान: अपनी सिगरेट की संख्या को ${cigarettesYesterday - 2} या उससे कम करने का लक्ष्य रखें। जब लालसा आए तो एक विचलित करने वाली तकनीक का उपयोग करें।`;
+                focusText.mr = `चांगला प्रयत्न! आजचे लक्ष: तुमच्या सिगारेटची संख्या ${cigarettesYesterday - 2} किंवा त्यापेक्षा कमी करण्याचे लक्ष्य ठेवा. जेव्हा लालसा येते तेव्हा विचलित करण्याची तंत्रज्ञान वापरा.`;
+            } else {
+                focusText.en = `Let's work on this together. Today's focus: Identify your top 3 craving triggers and apply a coping strategy. Try reducing your intake by 1-2 cigarettes.`;
+                focusText.hi = `आइए इस पर मिलकर काम करें। आज का ध्यान: अपनी शीर्ष 3 लालसा ट्रिगर्स की पहचान करें और एक मुकाबला रणनीति लागू करें। अपनी खपत को 1-2 सिगरेट कम करने का प्रयास करें।`;
+                focusText.mr = `यावर आपण एकत्र काम करूया. आजचे लक्ष: तुमच्या शीर्ष 3 लालसा ट्रिगर्स ओळखा आणि एक सामना करण्याची रणनीती लागू करा. तुमच्या सेवनात 1-2 सिगारेटने कमी करण्याचा प्रयत्न करा.`;
+            }
+
+            const today = new Date().toISOString().slice(0, 10);
+            const existingLogIndex = dailyLog.findIndex(log => log.date === today);
+
+            if (existingLogIndex > -1) {
+                dailyLog[existingLogIndex] = { date: today, smoked: cigarettesYesterday, focus: focusText };
+            } else {
+                dailyLog.unshift({ date: today, smoked: cigarettesYesterday, focus: focusText }); // Add to beginning
+            }
+            localStorage.setItem('dailyLog', JSON.stringify(dailyLog));
+
+            document.getElementById('currentDailyFocus').innerHTML = focusText[currentLanguage] || focusText['en'];
+            document.getElementById('todayFocusDisplay').style.display = 'block';
+            translatePage(currentLanguage); // Ensure focus display is updated
+        }
+
+        function populateSupportResources() {
+            const nrtElem = document.getElementById('nrtRecommendations');
+            const physicalElem = document.getElementById('physicalWellbeing');
+            const mentalElem = document.getElementById('mentalClarity');
+
+            let nrtText, physicalText, mentalText;
+            const currentDependence = currentUser.nicotineDependenceLevel || nicotineDependenceLevel; // Use stored value
+
+            if (currentDependence === 'High') {
+                nrtText = getTranslatedText('nrtRecHigh');
+                physicalText = getTranslatedText('physicalRecHigh');
+                mentalText = getTranslatedText('mentalRecHigh');
+            } else if (currentDependence === 'Moderate') {
+                nrtText = getTranslatedText('nrtRecModerate');
+                physicalText = getTranslatedText('physicalRecModerate');
+                mentalText = getTranslatedText('mentalRecModerate');
+            } else { // Low dependence
+                nrtText = getTranslatedText('nrtRecLow');
+                physicalText = getTranslatedText('physicalRecLow');
+                mentalText = getTranslatedText('mentalRecLow');
+            }
+
+            nrtElem.innerHTML = nrtText;
+            physicalElem.innerHTML = physicalText;
+            mentalElem.innerHTML = mentalText;
+            translatePage(currentLanguage); // Ensure content is correctly translated
+        }
+
         function updateProgressMetrics() {
             if (!quitDate) {
-                document.getElementById('journeyLog').innerHTML = `<div class="bg-white p-3 rounded-md shadow-sm text-sm" data-en="Set a quit date to track your progress!" data-hi="अपनी प्रगति को ट्रैक करने के लिए छोड़ने की तारीख निर्धारित करें!" data-mr="तुमची प्रगती ट्रॅक करण्यासाठी सोडण्याची तारीख निश्चित करा!">Set a quit date to track your progress!</div>`;
+                document.getElementById('journeyLog').innerHTML = `<div class="bg-white p-3 rounded-md shadow-sm text-sm">${getTranslatedText('setQuitDateToTrack')}</div>`;
+                document.getElementById('daysFree').textContent = '0';
+                document.getElementById('hoursFree').textContent = '0';
+                document.getElementById('minutesFree').textContent = '0';
+                document.getElementById('moneySaved').textContent = '₹0';
                 translatePage(currentLanguage);
                 return;
             }
+
             const now = new Date();
             const timeDiff = now.getTime() - quitDate.getTime();
-            const days = Math.max(0, Math.floor(timeDiff / (1000 * 60 * 60 * 24)));
+
+            const totalMinutes = Math.max(0, Math.floor(timeDiff / (1000 * 60)));
+            const hours = Math.floor(totalMinutes / 60);
+            const days = Math.floor(hours / 24);
+
             document.getElementById('daysFree').textContent = days;
+            document.getElementById('hoursFree').textContent = hours;
+            document.getElementById('minutesFree').textContent = totalMinutes;
             
-            const cigarettesPerDay = (fagerstromAnswers[3] !== null ? (fagerstromAnswers[3] + 1) * 10 - 5 : 10);
-            const moneySaved = days * cigarettesPerDay * 15;
+            // Calculate cigarettes per day based on Fagerstrom Q4 or default
+            let cigarettesPerDay = 10; // Default if no Fagerstrom data
+            if (fagerstromAnswers[3] !== null) {
+                // Assuming Fagerstrom Q4 options scores are 0, 1, 2, 3
+                // This rough mapping estimates avg cigarettes per day:
+                // 0 (<=10): 5, 1 (11-20): 15, 2 (21-30): 25, 3 (>=31): 35
+                if (fagerstromAnswers[3] === 0) cigarettesPerDay = 5;
+                else if (fagerstromAnswers[3] === 1) cigarettesPerDay = 15;
+                else if (fagerstromAnswers[3] === 2) cigarettesPerDay = 25;
+                else if (fagerstromAnswers[3] === 3) cigarettesPerDay = 35;
+            }
+            
+            const costPerCigarette = 15; // Example: Assuming ₹15 per cigarette
+            const moneySaved = days * cigarettesPerDay * costPerCigarette;
             document.getElementById('moneySaved').textContent = `₹${moneySaved.toLocaleString()}`;
             
-            const journeyLog = document.getElementById('journeyLog');
-            const journeyText = {
-                en: `🗓️ Your journey started on ${quitDate.toLocaleDateString()}. You are doing great!`,
-                hi: `🗓️ आपकी यात्रा ${quitDate.toLocaleDateString()} को शुरू हुई। आप बहुत अच्छा कर रहे हैं!`,
-                mr: `🗓️ तुमचा प्रवास ${quitDate.toLocaleDateString()} रोजी सुरू झाला. तुम्ही खूप छान करत आहात!`
+            const journeyLogElem = document.getElementById('journeyLog');
+            if (dailyLog.length === 0) {
+                journeyLogElem.innerHTML = `<div class="bg-white p-3 rounded-md shadow-sm text-sm">${getTranslatedText('setQuitDateToTrack')}</div>`;
+            } else {
+                journeyLogElem.innerHTML = dailyLog.map(entry => {
+                    const entryDate = new Date(entry.date).toLocaleDateString(currentLanguage === 'en' ? 'en-US' : (currentLanguage === 'hi' ? 'hi-IN' : 'mr-IN'), { year: 'numeric', month: 'numeric', day: 'numeric' });
+                    const focusTranslated = entry.focus[currentLanguage] || entry.focus['en'];
+                    return `
+                        <div class="bg-white p-3 rounded-md shadow-sm text-sm">
+                            <p><strong>${entryDate}</strong></p>
+                            <p data-en="Cigarettes smoked yesterday:" data-hi="कल पी गई सिगरेट:" data-mr="काल ओढलेल्या सिगारेट:">Cigarettes smoked yesterday:</p> ${entry.smoked}
+                            <p><strong>${getTranslatedText('todaysFocus')}</strong> ${focusTranslated}</p>
+                        </div>
+                    `;
+                }).join('');
             }
-            journeyLog.innerHTML = `<div class="bg-white p-3 rounded-md shadow-sm text-sm">${journeyText[currentLanguage]}</div>`;
+            translatePage(currentLanguage); // Re-translate log content
         }
         
+        // Initial load
         document.addEventListener('DOMContentLoaded', () => {
-            showScreen('welcomeScreen');
-            showFagerstromQuestion(0);
-            translatePage(currentLanguage);
+            showScreen('welcomeScreen'); // Start with welcome screen
+            translatePage(currentLanguage); // Translate initial screen content
+            // Pre-fill user data if available in localStorage
+            if (currentUser.name) document.getElementById('userName').value = currentUser.name;
+            if (currentUser.dob) document.getElementById('dob').value = currentUser.dob;
+            if (currentUser.gender) {
+                document.querySelector(`input[name="gender"][value="${currentUser.gender}"]`).checked = true;
+            }
+            if (currentUser.mood) document.getElementById('mood').value = currentUser.mood;
+
+            // Pre-fill quit decision if available
+            if (currentUser.quitDate) {
+                document.getElementById('setQuitDate').value = currentUser.quitDate;
+                document.getElementById('quitDateInput').style.display = 'block';
+                // Automatically set quitPlan if quitDate exists, default to 'continue'
+                quitPlan = 'continue'; 
+                // Set the correct radio button if needed (e.g. if 'Quit Now' was selected)
+                // This part might need more robust logic if you allow changing quit plan later
+            }
+            
+            // Pre-fill goals and motivations
+            if (currentUser.mainGoal) document.getElementById('mainGoal').value = currentUser.mainGoal;
+            if (currentUser.motivations) {
+                currentUser.motivations.forEach(mot => {
+                    const checkbox = document.querySelector(`input[name="motivation"][value="${mot}"]`);
+                    if (checkbox) checkbox.checked = true;
+                });
+            }
+            if (currentUser.otherMotivations) document.getElementById('otherMotivations').value = currentUser.otherMotivations;
+
+            renderSupporters(); // Display any stored supporters
+            renderDangerTimes(); // Display any stored danger times
+            loadReminderPreferences(); // Load reminder settings
+
+            // Update daily log for the current day if it exists
+            const today = new Date().toISOString().slice(0, 10);
+            const currentDayLog = dailyLog.find(log => log.date === today);
+            if (currentDayLog) {
+                document.getElementById('cigarettesSmokedYesterday').value = currentDayLog.smoked;
+                document.getElementById('currentDailyFocus').innerHTML = currentDayLog.focus[currentLanguage] || currentDayLog.focus['en'];
+                document.getElementById('todayFocusDisplay').style.display = 'block';
+            }
         });
+
+        // Set interval to update progress metrics every minute for live tracking
+        setInterval(updateProgressMetrics, 60 * 1000); 
     </script>
 </body>
 </html>
